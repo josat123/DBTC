@@ -1,10 +1,7 @@
 # DeflationaryBTC (DBTC)
 
-[![Build & Test](https://github.com/YOUR_GITHUB_USERNAME/DBTC/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_GITHUB_USERNAME/DBTC/actions)  
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  
-[![Solidity](https://img.shields.io/badge/Solidity-0.8.20-blue.svg)](https://soliditylang.org)  
-[![Foundry](https://img.shields.io/badge/Built%20With-Foundry-orange.svg)](https://book.getfoundry.sh/)  
-[![Polygon](https://img.shields.io/badge/Network-Polygon-8247e5.svg)](https://polygon.technology/)  
+[![Build & Test](https://github.com/josat123/DBTC/actions/workflows/ci.yml/badge.svg)](https://github.com/josat123/DBTC/actions)   
+
 
 ---
 
@@ -98,3 +95,9 @@ All critical and high-severity issues resolved prior to deployment.
 📜 License
 
 This project is licensed under the MIT License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  
+[![Solidity](https://img.shields.io/badge/Solidity-0.8.20-blue.svg)](https://soliditylang.org)  
+[![Foundry](https://img.shields.io/badge/Built%20With-Foundry-orange.svg)](https://book.getfoundry.sh/)  
+[![Polygon](https://img.shields.io/badge/Network-Polygon-8247e5.svg)](https://polygon.technology/)  
+![Audit Status](https://img.shields.io/badge/Audit-Verified-brightgreen)
