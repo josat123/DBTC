@@ -1,51 +1,11 @@
-# =========================
-# Build and Release Folders
-# =========================
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
-out/        # Foundry build output
-cache/      # Foundry cache
-remappings.txt
-
-# =========================
-# Project Settings
-# =========================
-.settings/
-
-# =========================
-# Executables
-# =========================
-*.swf
-*.air
-*.ipa
-*.apk
-
-# =========================
-# Project files (Eclipse/Flash Builder)
-# Do NOT exclude as they contain compiler settings
-# =========================
-.project
-.actionScriptProperties
-.flexProperties
-
-# =========================
-# Node / JS dependencies (for scripts or tooling)
-# =========================
+out/
+cache/
+artifacts/
+lib/
+*.dbg.json
 node_modules/
-
-# =========================
-# IDE Settings
-# =========================
 .vscode/
-
-# =========================
-# Logs
-# =========================
+.idea/
+.DS_Store
+Thumbs.db
 *.log
-
-# =========================
-# Temporary / cache files
-# =========================
-*.tmp
