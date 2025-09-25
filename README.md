@@ -13,7 +13,7 @@
 It is not a simple token but a **full-featured protocol** aimed at balancing scarcity, utility, and community-driven incentives.  
 
 **Deployed Contract:**  
-[`0x4e5792d50d908ca1f65964e8026093c69c75a704`](https://polygonscan.com/address/0x4e5792d50d908ca1f65964e8026093c69c75a704)
+[`0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7`](https://polygonscan.com/address/0x4e5792d50d908ca1f65964e8026093c69c75a704)
 
 ### Key Design Goals
 - **Scarcity through burns** – Supply reduction continues annually until the hard cap of 21M tokens is reached.  
