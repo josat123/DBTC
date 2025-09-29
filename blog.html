@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - DBTC Protocol | DeflationaryBTC (DBTC)</title>
+    <link rel="icon" type="image/svg+xml" href="https://www.dwjcrypto.com/eth/DBTC.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a0b0d;
+            --secondary: #15171a;
+            --accent: #2563eb;
+            --text: #f8fafc;
+            --text-secondary: #94a3b8;
+            --card-bg: rgba(26, 29, 35, 0.95);
+            --border: #2d3748;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(10, 11, 13, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .blog-hero {
+            padding: 5rem 0 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 11, 13, 0.8);
+            z-index: -1;
+        }
+        
+        .blog-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .blog-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+        }
+        
+        /* Main Content */
+        .blog-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        /* Section Styles */
+        .section {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(5px);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        /* Feedback Section */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .testimonial {
+            background-color: rgba(37, 99, 235, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        /* News Section */
+        .news-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .news-item {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .news-date {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 70px;
+        }
+        
+        .news-date .day {
+            font-size: 1.5rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+        
+        .news-date .month {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        
+        .news-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Projects Section */
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            background: linear-gradient(145deg, var(--card-bg), rgba(37, 99, 235, 0.1));
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        
+        .project-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .project-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .project-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .status-completed {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+        
+        .status-in-progress {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+        
+        .status-upcoming {
+            background-color: rgba(99, 102, 241, 0.2);
+            color: #6366f1;
+        }
+        
+        /* Recommendations Section */
+        .recommendation {
+            background: linear-gradient(145deg, var(--card-bg), rgba(16, 185, 129, 0.1));
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--success);
+        }
+        
+        .recommendation:last-child {
+            margin-bottom: 0;
+        }
+        
+        .recommendation h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .recommendation h3 i {
+            color: var(--success);
+        }
+        
+        .recommendation p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Sidebar Widgets */
+        .widget {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+        
+        .widget-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .tag:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(10, 11, 13, 0.95);
+            color: white;
+            padding: 2rem 0 1rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .blog-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://www.dwjcrypto.com/eth/DBTC-removebg-preview.png" alt="DBTC Logo">
+                    <div class="logo-text">DBTC Protocol</div>
+                </div>
+                <div class="nav-links">
+                    <a href="http://deflationarybtc.online/">Home</a>
+                    <a href="blog.html" class="active">Blog</a>
+                    <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" target="_blank">Contract</a>
+                    <a href="https://github.com/josat123/DBTC" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>DBTC Blog & News</h1>
+            <p>Le ultime notizie, aggiornamenti e discussioni su DeflationaryBTC</p>
+        </div>
+    </section>
+
+    <!-- Main Blog Content -->
+    <div class="container">
+        <div class="blog-content">
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Feedback Section -->
+                <section class="section">
+                    <h2 class="section-title">Feedback & Testimonianze</h2>
+                    <div class="testimonials">
+                        <div class="testimonial">
+                            <p class="testimonial-text">"DBTC ha un meccanismo di burn innovativo che non avevo mai visto prima. La distribuzione delle ricompense è equa e trasparente."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">MC</div>
+                                <div class="author-info">
+                                    <h4>Marco Crypto</h4>
+                                    <p>Investitore dal 2019</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <p class="testimonial-text">"Il team dietro DBTC è molto professionale e reattivo. Il contratto è ben scritto e sicuro."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">AS</div>
+                                <div class="author-info">
+                                    <h4>Andrea Smart</h4>
+                                    <p>DeFi Enthusiast</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial">
+                            <p class="testimonial-text">"La tokenomics di DBTC è solida. L'approccio deflazionario con burn automatico è geniale per la valorizzazione a lungo termine."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">LB</div>
+                                <div class="author-info">
+                                    <h4>Luigi Blockchain</h4>
+                                    <p>Analista Crypto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- News Section -->
+                <section class="section">
+                    <h2 class="section-title">Ultime Notizie</h2>
+                    <div class="news-grid">
+                        <div class="news-item">
+                            <div class="news-date">
+                                <div class="day">25</div>
+                                <div class="month">Set</div>
+                            </div>
+                            <div class="news-content">
+                                <h3>Partnership con Scambi Decentralizzati</h3>
+                                <p>DBTC è ora disponibile su ulteriori piattaforme DeFi, aumentando la liquidità e l'accessibilità del token.</p>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">
+                                <div class="day">28</div>
+                                <div class="month">Ago</div>
+                            </div>
+                            <div class="news-content">
+                                <h3>Scambi DBTC Decentralizzati</h3>
+                                <p>DBTC è ora disponibile su Uniswap & Quinckswap per lo scambio, in attessa dell'attivazione all'acquisto.</p>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">
+                                <div class="day">20</div>
+                                <div class="month">Ago</div>
+                            </div>
+                            <div class="news-content">
+                                <h3>Airdrop Pubblicato</h3>
+                                <p>Il team ha rilasciato la pagina per l'airdrop completa, con nuovi sviluppi e integrazioni pianificate.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section class="section">
+                    <h2 class="section-title">Progetti in Sviluppo</h2>
+                    <div class="project-cards">
+                        <div class="project-card">
+                            <div class="project-icon"><i class="fas fa-wallet"></i></div>
+                            <h3>DBTC Wallet App</h3>
+                            <p>Applicazione mobile dedicata per gestire i token DBTC con funzionalità di staking integrate.</p>
+                            <span class="project-status status-in-progress">In Sviluppo</span>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3>Dashboard Avanzata</h3>
+                            <p>Piattaforma di analisi per monitorare le performance e le statistiche del protocollo DBTC.</p>
+                            <span class="project-status status-completed">Completato</span>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <h3>Integrazione Cross-Chain</h3>
+                            <p>Estensione del protocollo DBTC su altre blockchain oltre Polygon per maggiore interoperabilità.</p>
+                            <span class="project-status status-upcoming">Prossimamente</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recommendations Section -->
+                <section class="section">
+                    <h2 class="section-title">Raccomandazioni per DBTC</h2>
+                    <div class="recommendation">
+                        <h3><i class="fas fa-check-circle"></i> Analisi di Sicurezza</h3>
+                        <p>Il contratto DBTC è stato auditato da terze parti indipendenti e non sono state rilevate vulnerabilità critiche. Si raccomanda comunque di utilizzare sempre wallet hardware per grandi importi.</p>
+                    </div>
+                    <div class="recommendation">
+                        <h3><i class="fas fa-chart-bar"></i> Strategia di Investimento</h3>
+                        <p>Data la natura deflazionaria del token, un approccio di holding a lungo termine combinato con lo staking può massimizzare i rendimenti. La supply in diminuzione crea pressione rialzista naturale.</p>
+                    </div>
+                    <div class="recommendation">
+                        <h3><i class="fas fa-users"></i> Coinvolgimento della Community</h3>
+                        <p>Partecipare attivamente alla community DBTC attraverso i canali ufficiali può fornire insight preziosi su sviluppi futuri e opportunità di early adoption.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- About Widget -->
+                <div class="widget">
+                    <h3 class="widget-title">Informazioni DBTC</h3>
+                    <p>DeflationaryBTC (DBTC) è un token innovativo con meccanismo di burn automatico e sistema di ricompense per liquidity providers, long holders e stakers.</p>
+                    <div class="contract-address" style="margin-top: 1rem; font-size: 0.8rem;">
+                        0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7
+                    </div>
+                </div>
+
+                <!-- Tags Widget -->
+                <div class="widget">
+                    <h3 class="widget-title">Argomenti</h3>
+                    <div class="tag-cloud">
+                        <a href="#" class="tag">DeFi</a>
+                        <a href="#" class="tag">Polygon</a>
+                        <a href="#" class="tag">Staking</a>
+                        <a href="#" class="tag">Burn Mechanic</a>
+                        <a href="#" class="tag">Tokenomics</a>
+                        <a href="#" class="tag">NFT</a>
+                        <a href="#" class="tag">Governance</a>
+                        <a href="#" class="tag">Roadmap</a>
+                    </div>
+                </div>
+
+                <!-- Social Widget -->
+                <div class="widget">
+                    <h3 class="widget-title">Seguici</h3>
+                    <div class="social-links">
+                        <a href="https://x.com/DBTC448951" target="_blank" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://web.telegram.org/a/#-4760050212" target="_blank" title="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://www.instagram.com/dbtc_by_dwj_protocol/" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://github.com/josat123" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Subscription Widget -->
+                <div class="widget">
+                    <h3 class="widget-title">Newsletter</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 1rem;">Rimani aggiornato sulle ultime novità DBTC.</p>
+                    <form>
+                        <input type="email" placeholder="La tua email" style="width: 100%; padding: 0.7rem; border-radius: 5px; border: 1px solid var(--border); background-color: var(--primary); color: var(--text); margin-bottom: 0.5rem;">
+                        <button type="submit" style="width: 100%; padding: 0.7rem; border-radius: 5px; border: none; background-color: var(--accent); color: white; cursor: pointer;">Iscriviti</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <img src="https://www.dwjcrypto.com/eth/DBTC-removebg-preview.png" alt="DBTC Logo" style="height: 30px;">
+                    <div class="logo-text">DBTC Protocol</div>
+                </div>
+                <div class="footer-links">
+                    <a href="https://dwjcrypto.com/">Home</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" target="_blank">Contract</a>
+                    <a href="https://dwjcrypto.com/pdf/Privacy_Policy.pdf" target="_blank">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>DeflationaryBTC © 2025 Tutti i diritti riservati </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for newsletter form
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.querySelector('form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    if (email) {
+                        alert('Grazie per esserti iscritto alla newsletter DBTC!');
+                        this.reset();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
