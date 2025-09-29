@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeflationaryBTC (DBTC)</title>
+    <link rel="icon" type="image/svg+xml" href="https://www.dwjcrypto.com/eth/DBTC.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a0b0d;
+            --secondary: #15171a;
+            --accent: #2563eb;
+            --text: #f8fafc;
+            --text-secondary: #94a3b8;
+            --card-bg: rgba(26, 29, 35, 0.9);
+            --border: #2d3748;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background-image: url('https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(10, 11, 13, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .language-selector {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .flag-btn {
+            width: 36px;
+            height: 27px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7;
+        }
+        
+        .flag-btn.active, .flag-btn:hover {
+            opacity: 1;
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+        
+        .flag-en {
+            background-image: url('https://flagcdn.com/w40/gb.png');
+        }
+        
+        .flag-it {
+            background-image: url('https://flagcdn.com/w40/it.png');
+        }
+        
+        .flag-es {
+            background-image: url('https://flagcdn.com/w40/es.png');
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 11, 13, 0.7);
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .contract-address {
+            background-color: rgba(37, 99, 235, 0.1);
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 1rem auto;
+            max-width: 500px;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.3rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        /* Sections */
+        section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(5px);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .card h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            text-align: center;
+        }
+        
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Contract Section */
+        .contract-section {
+            background-color: rgba(10, 11, 13, 0.8);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .function-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .function-item {
+            background-color: var(--card-bg);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            border: 1px solid var(--border);
+        }
+        
+        .function-name {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .function-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(10, 11, 13, 0.95);
+            color: white;
+            padding: 2rem 0 1rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            width: 100%;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+        
+        .powered-by {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 99;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .back-to-top:hover {
+            background-color: #1d4ed8;
+            transform: scale(1.1);
+        }
+        
+        /* Scroll menu */
+        .scroll-menu {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 99;
+        }
+        
+        .menu-trigger {
+            background-color: var(--accent);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .menu-trigger:hover {
+            background-color: #1d4ed8;
+            transform: scale(1.1);
+        }
+        
+        .menu-items {
+            position: absolute;
+            bottom: 45px;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: 6px;
+            padding: 0.5rem 0;
+            min-width: 150px;
+            display: none;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .menu-items a {
+            padding: 0.6rem 1rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .menu-items a:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--accent);
+        }
+        
+        .scroll-menu.open .menu-items {
+            display: flex;
+        }
+        
+        /* Language Content */
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .back-to-top, .scroll-menu {
+                bottom: 1rem;
+            }
+            
+            .back-to-top {
+                left: 1rem;
+            }
+            
+            .scroll-menu {
+                right: 1rem;
+            }
+            
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://www.dwjcrypto.com/eth/DBTC-removebg-preview.png" alt="DBTC Logo">
+                    <div class="logo-text">DWJ Protocol</div>
+                </div>
+                <div class="language-selector">
+                    <div class="flag-btn flag-en active" data-lang="en"></div>
+                    <div class="flag-btn flag-it" data-lang="it"></div>
+                    <div class="flag-btn flag-es" data-lang="es"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <!-- English Content -->
+            <div class="lang-content active" id="hero-en">
+                <h1>DeflationaryBTC (DBTC)</h1>
+                <p>The revolutionary deflationary token with automatic burn mechanism and rewards for liquidity providers, long holders, and stakers.</p>
+                <div class="contract-address">
+                    Contract: 0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7
+                </div>
+                <a href="https://dwjcrypto.com/pdf/Overview.pdf" class="btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+                <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" class="btn btn-outline" target="_blank">View Contract</a>
+            </div>
+            
+            <!-- Italian Content -->
+            <div class="lang-content" id="hero-it">
+                <h1>DeflationaryBTC (DBTC)</h1>
+                <p>Il token deflazionario rivoluzionario con meccanismo di bruciatura automatica e ricompense per provider di liquidità, holder long e staker.</p>
+                <div class="contract-address">
+                    Contratto: 0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7
+                </div>
+                <a href="#about" class="btn">Scopri di Più</a>
+                <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" class="btn btn-outline" target="_blank">Vedi Contratto</a>
+            </div>
+            
+            <!-- Spanish Content -->
+            <div class="lang-content" id="hero-es">
+                <h1>DeflationaryBTC (DBTC)</h1>
+                <p>La token deflacionaria revolucionaria con mecanismo de quema automática y recompensas para proveedores de liquidez, holders largos y stakers.</p>
+                <div class="contract-address">
+                    Contrato: 0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7
+                </div>
+                <a href="#about" class="btn">Saber Más</a>
+                <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" class="btn btn-outline" target="_blank">Ver Contrato</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="lang-content active">About DBTC Protocol</span>
+                <span class="lang-content">Informazioni sul Protocollo DBTC</span>
+                <span class="lang-content">Acerca del Protocolo DBTC</span>
+            </h2>
+            
+            <div class="card-container">
+                <!-- English Content -->
+                <div class="lang-content active">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-fire"></i></div>
+                        <h3>Automatic Burn</h3>
+                        <p>The burn percentage is created by users going long and staking. The more activity, the higher the burn, up to a maximum of 50%.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                        <h3>Reward Distribution</h3>
+                        <p>60% rewards for liquidity providers, 30% for long holders, and 10% for stakers who unstake their tokens.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-coins"></i></div>
+                        <h3>Supply Reduction</h3>
+                        <p>Initial supply of 2B tokens, with a final target supply of 21M tokens through the deflationary mechanism.</p>
+                    </div>
+                </div>
+                
+                <!-- Italian Content -->
+                <div class="lang-content">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-fire"></i></div>
+                        <h3>Bruciatura Automatica</h3>
+                        <p>La percentuale di bruciatura è creata dagli utenti che vanno long e fanno staking. Più alta è l'attività, più alta è la bruciatura, fino a un massimo del 50%.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                        <h3>Distribuzione Ricompense</h3>
+                        <p>60% di ricompense per i provider di liquidità, 30% per gli holder long e 10% per gli staker che unstakano i loro token.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-coins"></i></div>
+                        <h3>Riduzione della Supply</h3>
+                        <p>Supply iniziale di 2B token, con un obiettivo finale di 21M token attraverso il meccanismo deflazionario.</p>
+                    </div>
+                </div>
+                
+                <!-- Spanish Content -->
+                <div class="lang-content">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-fire"></i></div>
+                        <h3>Quema Automática</h3>
+                        <p>El porcentaje de quema es creado por usuarios que hacen long y staking. Cuanta más actividad, mayor es la quema, hasta un máximo del 50%.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                        <h3>Distribución de Recompensas</h3>
+                        <p>60% de recompensas para proveedores de liquidez, 30% para holders largos y 10% para stakers que deshacen su staking.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-coins"></i></div>
+                        <h3>Reducción de Suministro</h3>
+                        <p>Suministro inicial de 2B tokens, con un objetivo final de 21M tokens a través del mecanismo deflacionario.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contract Section -->
+    <section class="contract-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="lang-content active">Contract Functions</span>
+                <span class="lang-content">Funzioni del Contratto</span>
+                <span class="lang-content">Funciones del Contrato</span>
+            </h2>
+            
+            <div class="lang-content active">
+                <ul class="function-list">
+                    <li class="function-item">
+                        <div class="function-name">burn(uint256 amount)</div>
+                        <div class="function-desc">Permanently removes tokens from circulation, reducing total supply.</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">stake(uint256 amount)</div>
+                        <div class="function-desc">Lock tokens to earn staking rewards (10% of reward pool).</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">unstake(uint256 amount)</div>
+                        <div class="function-desc">Release staked tokens and claim rewards.</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">goLong(uint256 amount)</div>
+                        <div class="function-desc">Commit to holding tokens long-term to earn 30% of reward pool.</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">pause() / unpause()</div>
+                        <div class="function-desc">Emergency functions to temporarily halt contract operations.</div>
+                    </li>
+                </ul>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7#writeContract" class="btn" target="_blank">Interact with Contract</a>
+                </div>
+            </div>
+            
+            <div class="lang-content">
+                <ul class="function-list">
+                    <li class="function-item">
+                        <div class="function-name">burn(uint256 amount)</div>
+                        <div class="function-desc">Rimuove permanentemente token dalla circolazione, riducendo la supply totale.</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">stake(uint256 amount)</div>
+                        <div class="function-desc">Blocca token per guadagnare ricompense di staking (10% del pool ricompense).</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">unstake(uint256 amount)</div>
+                        <div class="function-desc">Rilascia token stakati e richiedi le ricompense.</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">goLong(uint256 amount)</div>
+                        <div class="function-desc">Impegna a detenere token a lungo termine per guadagnare il 30% del pool ricompense.</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">pause() / unpause()</div>
+                        <div class="function-desc">Funzioni di emergenza per sospendere temporaneamente le operazioni del contratto.</div>
+                    </li>
+                </ul>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7#writeContract" class="btn" target="_blank">Interagisci con il Contratto</a>
+                </div>
+            </div>
+            
+            <div class="lang-content">
+                <ul class="function-list">
+                    <li class="function-item">
+                        <div class="function-name">burn(uint256 amount)</div>
+                        <div class="function-desc">Elimina permanentemente tokens de la circulación, reduciendo el suministro total.</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">stake(uint256 amount)</div>
+                        <div class="function-desc">Bloquea tokens para ganar recompensas de staking (10% del pool de recompensas).</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">unstake(uint256 amount)</div>
+                        <div class="function-desc">Libera tokens staked y reclama las recompensas.</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">goLong(uint256 amount)</div>
+                        <div class="function-desc">Compromete a mantener tokens a largo plazo para ganar 30% del pool de recompensas.</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">pause() / unpause()</div>
+                        <div class="function-desc">Funciones de emergencia para detener temporalmente las operaciones del contrato.</div>
+                    </li>
+                </ul>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7#writeContract" class="btn" target="_blank">Interactuar con el Contrato</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://x.com/DBTC448951" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://web.telegram.org/a/#-4760050212" target="_blank" title="Telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://www.instagram.com/dbtc_by_dwj_protocol/" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://github.com/josat123/DBTC" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                
+                <div class="powered-by">
+                    Powered by DWJ Protocol
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>DeflationaryBTC © 2025 All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scroll menu -->
+    <div class="scroll-menu">
+        <button class="menu-trigger">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="menu-items">
+            <a href="https://dwjcrypto.com/pdf/DBTC_Whitepaper.pdf">Whitepaper</a>
+            <a href="https://dwjcrypto.com/pdf/Tokemetric-DBTC.pdf" target="_blank">Tokemetrics</a>
+            <a href="https://github.com/josat123/DBTC">Repository</a>
+            <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" target="_blank">Contract</a>
+            <a href="https://dwjcrypto.com/airdrop.html">Airdrop</a>
+            <a href="https://dwjcrypto.com/pdf/Overview.pdf" target="_blank" >Overview</a>
+            <a href="https://dwjcrypto.com/-/blog.html">Blog</a>
+        </div>
+    </div>
+
+    <script>
+        // Language Switching Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const flagButtons = document.querySelectorAll('.flag-btn');
+            const langContents = document.querySelectorAll('.lang-content');
+            
+            // Initially show only English content
+            function setLanguage(lang) {
+                // Hide all language content
+                langContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show content for selected language
+                document.querySelectorAll(`.lang-content`).forEach(content => {
+                    if (content.id && content.id.includes(lang)) {
+                        content.classList.add('active');
+                    } else if (!content.id) {
+                        // Handle section titles and card containers
+                        const childElements = content.querySelectorAll('[class*="lang-content"]');
+                        if (childElements.length > 0) {
+                            childElements.forEach(child => {
+                                if (child.classList.contains(`lang-content-${lang}`)) {
+                                    content.classList.add('active');
+                                }
+                            });
+                        } else {
+                            // For elements without IDs but with language content inside
+                            const hasLangContent = content.innerHTML.includes(`lang-content ${lang}`) || 
+                                                  content.innerHTML.includes(`id="${lang}"`);
+                            if (hasLangContent) {
+                                content.classList.add('active');
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Set English as default
+            setLanguage('en');
+            
+            flagButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active button
+                    flagButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Set the language
+                    setLanguage(lang);
+                });
+            });
+
+            // Back to top button
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Scroll menu functionality
+            const menuTrigger = document.querySelector('.menu-trigger');
+            const scrollMenu = document.querySelector('.scroll-menu');
+            
+            menuTrigger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                scrollMenu.classList.toggle('open');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function() {
+                scrollMenu.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>
