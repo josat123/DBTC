@@ -192,6 +192,15 @@
             background-color: #0d9c6d;
         }
         
+        .btn-warning {
+            background-color: var(--warning);
+            color: var(--primary);
+        }
+        
+        .btn-warning:hover {
+            background-color: #d97706;
+        }
+        
         /* Sections */
         section {
             padding: 5rem 0;
@@ -580,9 +589,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                   <img src="DBTC.svg" alt="DBTC Logo">
-                   <div class="logo-text">DBTC Protocol</div>
-                 </div>
+                    <img src="https://www.dwjcrypto.com/eth/DBTC-removebg-preview.png" alt="DBTC Logo">
+                    <div class="logo-text">DBTC Protocol</div>
+                </div>
                 <div class="language-selector">
                     <button class="lang-btn active" data-lang="en">EN</button>
                     <button class="lang-btn" data-lang="it">IT</button>
@@ -653,7 +662,7 @@
                 <div class="contract-address">
                     Contrato: 0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7
                 </div>
-                <a href="#https://app.uniswap.org/positions/v4/polygon/44797" class="btn">Comprar DBTC Ahora</a>
+                <a href="https://app.uniswap.org/positions/v4/polygon/44797" class="btn">Comprar DBTC Ahora</a>
                 <a href="#airdrop" class="btn btn-success">Reclamar Airdrop</a>
             </div>
         </div>
@@ -800,9 +809,8 @@
                         <i class="fas fa-code-branch"></i>
                     </a>
                 </div>
-                
-                <div class="contact">
-                    <a href="mailto:dbtc@dwjcrypto.com">Contact</a>
+                    <div class="contact">
+                    <a href="mailto:info@deflationarybtc.online">Contact</a>
                 </div>
             </div>
             
@@ -1003,6 +1011,42 @@
             const checkBtn = document.getElementById('check-eligibility');
             const statusDiv = document.getElementById('wallet-status');
             
+            // Check if already connected on page load
+            window.addEventListener('load', async function() {
+                if (typeof window.ethereum !== 'undefined') {
+                    try {
+                        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                        if (accounts.length > 0) {
+                            // Already connected, check network
+                            await checkNetworkAndUpdateUI(accounts[0]);
+                        }
+                    } catch (error) {
+                        console.error('Error checking existing connection:', error);
+                    }
+                }
+            });
+            
+            // Listen for account changes
+            if (typeof window.ethereum !== 'undefined') {
+                window.ethereum.on('accountsChanged', async function(accounts) {
+                    if (accounts.length === 0) {
+                        // User disconnected wallet
+                        resetUI();
+                    } else {
+                        // User switched accounts
+                        await checkNetworkAndUpdateUI(accounts[0]);
+                    }
+                });
+                
+                // Listen for chain changes
+                window.ethereum.on('chainChanged', async function(chainId) {
+                    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                    if (accounts.length > 0) {
+                        await checkNetworkAndUpdateUI(accounts[0]);
+                    }
+                });
+            }
+            
             if (connectBtn) {
                 connectBtn.addEventListener('click', async function() {
                     if (typeof window.ethereum === 'undefined') {
@@ -1013,36 +1057,14 @@
                     try {
                         // Request account access
                         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                        const web3 = new Web3(window.ethereum);
-                        
-                        // Check if connected to Polygon
-                        const chainId = await web3.eth.getChainId();
-                        if (chainId !== 137) { // Polygon Mainnet chain ID
-                            updateStatus('Please switch to Polygon Mainnet to continue.', 'warning');
-                            connectBtn.style.display = 'none';
-                            checkBtn.style.display = 'inline-block';
-                            return;
-                        }
-                        
-                        // Get POL balance
-                        const balance = await web3.eth.getBalance(accounts[0]);
-                        const polBalance = web3.utils.fromWei(balance, 'ether');
-                        
-                        if (parseFloat(polBalance) < 0.01) {
-                            updateStatus('Wallet has insufficient POL balance. Minimum 0.01 POL required.', 'error');
-                            return;
-                        }
-                        
-                        updateStatus(`Wallet connected! Address: ${accounts[0].substring(0, 10)}... Balance: ${parseFloat(polBalance).toFixed(4)} POL`, 'success');
-                        connectBtn.style.display = 'none';
-                        claimBtn.style.display = 'inline-block';
-                        
-                        // Store wallet address for airdrop
-                        window.connectedWallet = accounts[0];
-                        
+                        await checkNetworkAndUpdateUI(accounts[0]);
                     } catch (error) {
                         console.error('Wallet connection error:', error);
-                        updateStatus('Error connecting wallet. Please try again.', 'error');
+                        if (error.code === 4001) {
+                            updateStatus('Wallet connection rejected. Please try again.', 'error');
+                        } else {
+                            updateStatus('Error connecting wallet. Please try again.', 'error');
+                        }
                     }
                 });
             }
@@ -1055,6 +1077,12 @@
                             method: 'wallet_switchEthereumChain',
                             params: [{ chainId: '0x89' }], // Polygon Mainnet
                         });
+                        
+                        // After switching, check the network again
+                        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                        if (accounts.length > 0) {
+                            await checkNetworkAndUpdateUI(accounts[0]);
+                        }
                     } catch (switchError) {
                         // This error code indicates that the chain has not been added to MetaMask
                         if (switchError.code === 4902) {
@@ -1075,11 +1103,20 @@
                                         },
                                     ],
                                 });
+                                
+                                // After adding, check the network again
+                                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                                if (accounts.length > 0) {
+                                    await checkNetworkAndUpdateUI(accounts[0]);
+                                }
                             } catch (addError) {
                                 console.error('Error adding Polygon network:', addError);
+                                updateStatus('Failed to add Polygon network. Please add it manually.', 'error');
                             }
+                        } else {
+                            console.error('Error switching network:', switchError);
+                            updateStatus('Failed to switch to Polygon network.', 'error');
                         }
-                        console.error('Error switching network:', switchError);
                     }
                 });
             }
@@ -1088,6 +1125,17 @@
                 claimBtn.addEventListener('click', async function() {
                     if (!window.connectedWallet) {
                         updateStatus('Please connect your wallet first.', 'error');
+                        return;
+                    }
+                    
+                    // Double-check we're on the correct network
+                    const web3 = new Web3(window.ethereum);
+                    const chainId = await web3.eth.getChainId();
+                    if (chainId !== 137) {
+                        updateStatus('Please switch to Polygon Mainnet to claim the airdrop.', 'warning');
+                        connectBtn.style.display = 'none';
+                        claimBtn.style.display = 'none';
+                        checkBtn.style.display = 'inline-block';
                         return;
                     }
                     
@@ -1110,6 +1158,10 @@
                     // Save to localStorage
                     localStorage.setItem('airdropParticipants', JSON.stringify(airdropParticipants));
                     
+                    // Update admin panel
+                    updateParticipantCount();
+                    updateParticipantsList();
+                    
                     // Simulate transaction delay
                     setTimeout(() => {
                         updateStatus('Airdrop claimed successfully! 100 DBTC tokens will be sent to your wallet.', 'success');
@@ -1118,7 +1170,56 @@
                 });
             }
             
+            // Function to check network and update UI accordingly
+            async function checkNetworkAndUpdateUI(account) {
+                const web3 = new Web3(window.ethereum);
+                const chainId = await web3.eth.getChainId();
+                
+                if (chainId !== 137) { // Polygon Mainnet chain ID
+                    updateStatus('Please switch to Polygon Mainnet to continue.', 'warning');
+                    connectBtn.style.display = 'none';
+                    claimBtn.style.display = 'none';
+                    checkBtn.style.display = 'inline-block';
+                    return;
+                }
+                
+                // Get POL balance
+                const balance = await web3.eth.getBalance(account);
+                const polBalance = web3.utils.fromWei(balance, 'ether');
+                
+                if (parseFloat(polBalance) < 0.01) {
+                    updateStatus('Wallet has insufficient POL balance. Minimum 0.01 POL required.', 'error');
+                    connectBtn.style.display = 'none';
+                    claimBtn.style.display = 'none';
+                    checkBtn.style.display = 'inline-block';
+                    return;
+                }
+                
+                updateStatus(`Wallet connected! Address: ${account.substring(0, 10)}... Balance: ${parseFloat(polBalance).toFixed(4)} POL`, 'success');
+                connectBtn.style.display = 'none';
+                claimBtn.style.display = 'inline-block';
+                checkBtn.style.display = 'none';
+                
+                // Store wallet address for airdrop
+                window.connectedWallet = account;
+            }
+            
+            // Function to reset UI when wallet is disconnected
+            function resetUI() {
+                updateStatus('', '');
+                statusDiv.style.display = 'none';
+                connectBtn.style.display = 'inline-block';
+                claimBtn.style.display = 'none';
+                checkBtn.style.display = 'none';
+                window.connectedWallet = null;
+            }
+            
             function updateStatus(message, type) {
+                if (!message) {
+                    statusDiv.style.display = 'none';
+                    return;
+                }
+                
                 statusDiv.textContent = message;
                 statusDiv.className = 'wallet-status';
                 
@@ -1142,6 +1243,5 @@
         });
     </script>
 </body>
-
 </html>
 
