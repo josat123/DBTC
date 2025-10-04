@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeflationaryBTC (DBTC)</title>
+    <title>DeflationaryBTC (DBTC) - Airdrop</title>
     <link rel="icon" type="image/svg+xml" href="https://www.dwjcrypto.com/eth/DBTC.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
@@ -299,6 +299,12 @@
             background-color: rgba(245, 158, 11, 0.1);
             border: 1px solid rgba(245, 158, 11, 0.3);
             color: var(--warning);
+        }
+        
+        .wallet-info {
+            background-color: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            color: var(--accent);
         }
         
         /* Footer */
@@ -668,76 +674,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="lang-content active" id="title-en">About DBTC Protocol</span>
-                <span class="lang-content" id="title-it">Informazioni sul Protocollo DBTC</span>
-                <span class="lang-content" id="title-es">Acerca del Protocolo DBTC</span>
-            </h2>
-            
-            <div class="features">
-                <!-- English Content -->
-                <div class="lang-content active" id="about-en">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-fire"></i></div>
-                        <h3>Automatic Burn</h3>
-                        <p>The burn percentage is created by users going long and staking. The more activity, the higher the burn, up to a maximum of 50%.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3>Reward Distribution</h3>
-                        <p>60% rewards for liquidity providers, 30% for long holders, and 10% for stakers who unstake their tokens.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-coins"></i></div>
-                        <h3>Supply Reduction</h3>
-                        <p>Initial supply of 2B tokens, with a final target supply of 21M tokens through the deflationary mechanism.</p>
-                    </div>
-                </div>
-                
-                <!-- Italian Content -->
-                <div class="lang-content" id="about-it">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-fire"></i></div>
-                        <h3>Bruciatura Automatica</h3>
-                        <p>La percentuale di bruciatura è creata dagli utenti che vanno long e fanno staking. Più alta è l'attività, più alta è la bruciatura, fino a un massimo del 50%.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3>Distribuzione Ricompense</h3>
-                        <p>60% di ricompense per i provider di liquidità, 30% per gli holder long e 10% per gli staker che unstakano i loro token.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-coins"></i></div>
-                        <h3>Riduzione della Supply</h3>
-                        <p>Supply iniziale di 2B token, con un obiettivo finale di 21M token attraverso il meccanismo deflazionario.</p>
-                    </div>
-                </div>
-                
-                <!-- Spanish Content -->
-                <div class="lang-content" id="about-es">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-fire"></i></div>
-                        <h3>Quema Automática</h3>
-                        <p>El porcentaje de quema es creado por usuarios que hacen long y staking. Cuanta más actividad, mayor es la quema, hasta un máximo del 50%.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3>Distribución de Recompensas</h3>
-                        <p>60% de recompensas para proveedores de liquidez, 30% para holders largos y 10% para stakers que deshacen su staking.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-coins"></i></div>
-                        <h3>Reducción de Suministro</h3>
-                        <p>Suministro inicial de 2B tokens, con un objetivo final de 21M tokens a través del mecanismo deflacionario.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Airdrop Section -->
     <section id="airdrop">
         <div class="container">
@@ -774,7 +710,7 @@
                         <span class="lang-content">Richiedi Airdrop</span>
                         <span class="lang-content">Reclamar Airdrop</span>
                     </button>
-                    <button id="check-eligibility" class="btn btn-warning" style="display: none;">
+                    <button id="switch-network" class="btn btn-warning" style="display: none;">
                         <span class="lang-content active">Switch to Polygon</span>
                         <span class="lang-content">Passa a Polygon</span>
                         <span class="lang-content">Cambiar a Polygon</span>
@@ -1005,215 +941,239 @@
                 }
             });
 
-            // Real Wallet Connection Functionality
+            // Wallet Connection Functionality
             const connectBtn = document.getElementById('connect-wallet');
             const claimBtn = document.getElementById('claim-airdrop');
-            const checkBtn = document.getElementById('check-eligibility');
+            const switchBtn = document.getElementById('switch-network');
             const statusDiv = document.getElementById('wallet-status');
             
-            // Check if already connected on page load
-            window.addEventListener('load', async function() {
+            let web3;
+            let currentAccount = null;
+            
+            // Initialize on page load
+            window.addEventListener('load', async () => {
                 if (typeof window.ethereum !== 'undefined') {
-                    try {
-                        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-                        if (accounts.length > 0) {
-                            // Already connected, check network
-                            await checkNetworkAndUpdateUI(accounts[0]);
-                        }
-                    } catch (error) {
-                        console.error('Error checking existing connection:', error);
+                    web3 = new Web3(window.ethereum);
+                    
+                    // Check if already connected
+                    const accounts = await web3.eth.getAccounts();
+                    if (accounts.length > 0) {
+                        currentAccount = accounts[0];
+                        await checkNetworkAndBalance();
+                    }
+                    
+                    // Set up event listeners for account and network changes
+                    window.ethereum.on('accountsChanged', handleAccountsChanged);
+                    window.ethereum.on('chainChanged', handleChainChanged);
+                } else {
+                    updateStatus('Please install MetaMask or another Web3 wallet to connect.', 'error');
+                }
+            });
+            
+            // Handle account changes
+            function handleAccountsChanged(accounts) {
+                if (accounts.length === 0) {
+                    // User disconnected wallet
+                    resetUI();
+                    updateStatus('Wallet disconnected.', 'warning');
+                } else if (accounts[0] !== currentAccount) {
+                    currentAccount = accounts[0];
+                    checkNetworkAndBalance();
+                }
+            }
+            
+            // Handle network changes
+            function handleChainChanged(chainId) {
+                // Reload the page when network changes
+                window.location.reload();
+            }
+            
+            // Connect wallet button
+            connectBtn.addEventListener('click', async () => {
+                if (typeof window.ethereum === 'undefined') {
+                    updateStatus('Web3 wallet not found. Please install MetaMask or similar.', 'error');
+                    return;
+                }
+                
+                try {
+                    // Request account access
+                    const accounts = await window.ethereum.request({ 
+                        method: 'eth_requestAccounts' 
+                    });
+                    
+                    currentAccount = accounts[0];
+                    updateStatus('Wallet connected successfully!', 'success');
+                    
+                    // Check network and balance
+                    await checkNetworkAndBalance();
+                    
+                } catch (error) {
+                    console.error('Wallet connection error:', error);
+                    if (error.code === 4001) {
+                        updateStatus('Wallet connection rejected. Please try again.', 'error');
+                    } else {
+                        updateStatus('Error connecting wallet. Please try again.', 'error');
                     }
                 }
             });
             
-            // Listen for account changes
-            if (typeof window.ethereum !== 'undefined') {
-                window.ethereum.on('accountsChanged', async function(accounts) {
-                    if (accounts.length === 0) {
-                        // User disconnected wallet
-                        resetUI();
-                    } else {
-                        // User switched accounts
-                        await checkNetworkAndUpdateUI(accounts[0]);
-                    }
-                });
-                
-                // Listen for chain changes
-                window.ethereum.on('chainChanged', async function(chainId) {
-                    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-                    if (accounts.length > 0) {
-                        await checkNetworkAndUpdateUI(accounts[0]);
-                    }
-                });
-            }
-            
-            if (connectBtn) {
-                connectBtn.addEventListener('click', async function() {
-                    if (typeof window.ethereum === 'undefined') {
-                        updateStatus('Web3 wallet not found. Please install MetaMask or similar.', 'error');
-                        return;
-                    }
-                    
-                    try {
-                        // Request account access
-                        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                        await checkNetworkAndUpdateUI(accounts[0]);
-                    } catch (error) {
-                        console.error('Wallet connection error:', error);
-                        if (error.code === 4001) {
-                            updateStatus('Wallet connection rejected. Please try again.', 'error');
-                        } else {
-                            updateStatus('Error connecting wallet. Please try again.', 'error');
-                        }
-                    }
-                });
-            }
-            
-            if (checkBtn) {
-                checkBtn.addEventListener('click', async function() {
-                    try {
-                        // Request to switch to Polygon
-                        await window.ethereum.request({
-                            method: 'wallet_switchEthereumChain',
-                            params: [{ chainId: '0x89' }], // Polygon Mainnet
-                        });
-                        
-                        // After switching, check the network again
-                        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-                        if (accounts.length > 0) {
-                            await checkNetworkAndUpdateUI(accounts[0]);
-                        }
-                    } catch (switchError) {
-                        // This error code indicates that the chain has not been added to MetaMask
-                        if (switchError.code === 4902) {
-                            try {
-                                await window.ethereum.request({
-                                    method: 'wallet_addEthereumChain',
-                                    params: [
-                                        {
-                                            chainId: '0x89',
-                                            chainName: 'Polygon Mainnet',
-                                            rpcUrls: ['https://polygon-rpc.com/'],
-                                            blockExplorerUrls: ['https://polygonscan.com/'],
-                                            nativeCurrency: {
-                                                name: 'POL',
-                                                symbol: 'POL',
-                                                decimals: 18
-                                            },
-                                        },
-                                    ],
-                                });
-                                
-                                // After adding, check the network again
-                                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-                                if (accounts.length > 0) {
-                                    await checkNetworkAndUpdateUI(accounts[0]);
-                                }
-                            } catch (addError) {
-                                console.error('Error adding Polygon network:', addError);
-                                updateStatus('Failed to add Polygon network. Please add it manually.', 'error');
-                            }
-                        } else {
-                            console.error('Error switching network:', switchError);
-                            updateStatus('Failed to switch to Polygon network.', 'error');
-                        }
-                    }
-                });
-            }
-            
-            if (claimBtn) {
-                claimBtn.addEventListener('click', async function() {
-                    if (!window.connectedWallet) {
-                        updateStatus('Please connect your wallet first.', 'error');
-                        return;
-                    }
-                    
-                    // Double-check we're on the correct network
-                    const web3 = new Web3(window.ethereum);
-                    const chainId = await web3.eth.getChainId();
-                    if (chainId !== 137) {
-                        updateStatus('Please switch to Polygon Mainnet to claim the airdrop.', 'warning');
-                        connectBtn.style.display = 'none';
-                        claimBtn.style.display = 'none';
-                        checkBtn.style.display = 'inline-block';
-                        return;
-                    }
-                    
-                    updateStatus('Processing airdrop request...', 'warning');
-                    
-                    // Check if wallet has already claimed airdrop
-                    const alreadyClaimed = airdropParticipants.some(p => p.wallet.toLowerCase() === window.connectedWallet.toLowerCase());
-                    
-                    if (alreadyClaimed) {
-                        updateStatus('This wallet has already claimed the airdrop.', 'error');
-                        return;
-                    }
-                    
-                    // Add participant to the list
-                    airdropParticipants.push({
-                        wallet: window.connectedWallet,
-                        timestamp: new Date().toISOString()
+            // Switch network button
+            switchBtn.addEventListener('click', async () => {
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId: '0x89' }], // Polygon Mainnet
                     });
                     
-                    // Save to localStorage
-                    localStorage.setItem('airdropParticipants', JSON.stringify(airdropParticipants));
+                    // After switching, check the network again
+                    setTimeout(async () => {
+                        await checkNetworkAndBalance();
+                    }, 1000);
                     
-                    // Update admin panel
-                    updateParticipantCount();
-                    updateParticipantsList();
-                    
-                    // Simulate transaction delay
-                    setTimeout(() => {
-                        updateStatus('Airdrop claimed successfully! 100 DBTC tokens will be sent to your wallet.', 'success');
-                        claimBtn.style.display = 'none';
-                    }, 2000);
-                });
-            }
+                } catch (switchError) {
+                    // This error code indicates that the chain has not been added to MetaMask
+                    if (switchError.code === 4902) {
+                        try {
+                            await window.ethereum.request({
+                                method: 'wallet_addEthereumChain',
+                                params: [
+                                    {
+                                        chainId: '0x89',
+                                        chainName: 'Polygon Mainnet',
+                                        rpcUrls: ['https://polygon-rpc.com/'],
+                                        blockExplorerUrls: ['https://polygonscan.com/'],
+                                        nativeCurrency: {
+                                            name: 'POL',
+                                            symbol: 'POL',
+                                            decimals: 18
+                                        },
+                                    },
+                                ],
+                            });
+                            
+                            // After adding, check the network again
+                            setTimeout(async () => {
+                                await checkNetworkAndBalance();
+                            }, 1000);
+                            
+                        } catch (addError) {
+                            console.error('Error adding Polygon network:', addError);
+                            updateStatus('Failed to add Polygon network. Please add it manually.', 'error');
+                        }
+                    } else {
+                        console.error('Error switching network:', switchError);
+                        updateStatus('Failed to switch to Polygon network.', 'error');
+                    }
+                }
+            });
             
-            // Function to check network and update UI accordingly
-            async function checkNetworkAndUpdateUI(account) {
-                const web3 = new Web3(window.ethereum);
+            // Claim airdrop button
+            claimBtn.addEventListener('click', async () => {
+                if (!currentAccount) {
+                    updateStatus('Please connect your wallet first.', 'error');
+                    return;
+                }
+                
+                // Double-check we're on the correct network
+                const chainId = await web3.eth.getChainId();
+                if (chainId !== 137) {
+                    updateStatus('Please switch to Polygon Mainnet to claim the airdrop.', 'warning');
+                    connectBtn.style.display = 'none';
+                    claimBtn.style.display = 'none';
+                    switchBtn.style.display = 'inline-block';
+                    return;
+                }
+                
+                updateStatus('Processing airdrop request...', 'info');
+                
+                // Check if wallet has already claimed airdrop
+                const alreadyClaimed = airdropParticipants.some(p => 
+                    p.wallet.toLowerCase() === currentAccount.toLowerCase()
+                );
+                
+                if (alreadyClaimed) {
+                    updateStatus('This wallet has already claimed the airdrop.', 'error');
+                    return;
+                }
+                
+                // Add participant to the list
+                airdropParticipants.push({
+                    wallet: currentAccount,
+                    timestamp: new Date().toISOString()
+                });
+                
+                // Save to localStorage
+                localStorage.setItem('airdropParticipants', JSON.stringify(airdropParticipants));
+                
+                // Update admin panel
+                updateParticipantCount();
+                updateParticipantsList();
+                
+                // Simulate transaction delay
+                setTimeout(() => {
+                    updateStatus('Airdrop claimed successfully! 100 DBTC tokens will be sent to your wallet.', 'success');
+                    claimBtn.style.display = 'none';
+                    claimBtn.disabled = true;
+                }, 2000);
+            });
+            
+            // Check network and wallet balance
+            async function checkNetworkAndBalance() {
+                if (!currentAccount) return;
+                
                 const chainId = await web3.eth.getChainId();
                 
-                if (chainId !== 137) { // Polygon Mainnet chain ID
+                if (chainId !== 137) { // Not on Polygon
                     updateStatus('Please switch to Polygon Mainnet to continue.', 'warning');
                     connectBtn.style.display = 'none';
                     claimBtn.style.display = 'none';
-                    checkBtn.style.display = 'inline-block';
+                    switchBtn.style.display = 'inline-block';
                     return;
                 }
                 
                 // Get POL balance
-                const balance = await web3.eth.getBalance(account);
+                const balance = await web3.eth.getBalance(currentAccount);
                 const polBalance = web3.utils.fromWei(balance, 'ether');
                 
                 if (parseFloat(polBalance) < 0.01) {
-                    updateStatus('Wallet has insufficient POL balance. Minimum 0.01 POL required.', 'error');
+                    updateStatus(`Wallet connected but has insufficient POL balance (${parseFloat(polBalance).toFixed(4)} POL). Minimum 0.01 POL required.`, 'error');
                     connectBtn.style.display = 'none';
                     claimBtn.style.display = 'none';
-                    checkBtn.style.display = 'inline-block';
+                    switchBtn.style.display = 'none';
                     return;
                 }
                 
-                updateStatus(`Wallet connected! Address: ${account.substring(0, 10)}... Balance: ${parseFloat(polBalance).toFixed(4)} POL`, 'success');
-                connectBtn.style.display = 'none';
-                claimBtn.style.display = 'inline-block';
-                checkBtn.style.display = 'none';
+                // Check if already claimed
+                const alreadyClaimed = airdropParticipants.some(p => 
+                    p.wallet.toLowerCase() === currentAccount.toLowerCase()
+                );
                 
-                // Store wallet address for airdrop
-                window.connectedWallet = account;
+                if (alreadyClaimed) {
+                    updateStatus(`Wallet connected! Address: ${currentAccount.substring(0, 10)}... Balance: ${parseFloat(polBalance).toFixed(4)} POL. You have already claimed the airdrop.`, 'success');
+                    connectBtn.style.display = 'none';
+                    claimBtn.style.display = 'inline-block';
+                    claimBtn.disabled = true;
+                    claimBtn.textContent = 'Already Claimed';
+                    switchBtn.style.display = 'none';
+                } else {
+                    updateStatus(`Wallet connected! Address: ${currentAccount.substring(0, 10)}... Balance: ${parseFloat(polBalance).toFixed(4)} POL`, 'success');
+                    connectBtn.style.display = 'none';
+                    claimBtn.style.display = 'inline-block';
+                    switchBtn.style.display = 'none';
+                }
             }
             
-            // Function to reset UI when wallet is disconnected
+            // Reset UI when wallet is disconnected
             function resetUI() {
                 updateStatus('', '');
                 statusDiv.style.display = 'none';
                 connectBtn.style.display = 'inline-block';
                 claimBtn.style.display = 'none';
-                checkBtn.style.display = 'none';
-                window.connectedWallet = null;
+                switchBtn.style.display = 'none';
+                currentAccount = null;
             }
             
+            // Update status message
             function updateStatus(message, type) {
                 if (!message) {
                     statusDiv.style.display = 'none';
@@ -1233,6 +1193,9 @@
                     case 'warning':
                         statusDiv.classList.add('wallet-warning');
                         break;
+                    case 'info':
+                        statusDiv.classList.add('wallet-info');
+                        break;
                 }
                 
                 statusDiv.style.display = 'block';
@@ -1244,4 +1207,6 @@
     </script>
 </body>
 </html>
+</html>
+
 
