@@ -357,195 +357,6 @@
             font-size: 0.875rem;
         }
         
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            background-color: var(--accent);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            z-index: 99;
-            border: none;
-            font-size: 1.25rem;
-        }
-        
-        .back-to-top:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-3px);
-        }
-        
-        /* Admin Panel - Hidden by default, shown only with password */
-        .admin-panel {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: none; /* Hidden by default */
-        }
-        
-        .admin-btn {
-            background-color: var(--warning);
-            color: var(--primary);
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        
-        .admin-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .admin-content {
-            background-color: var(--secondary);
-            padding: 2rem;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        
-        .admin-content h3 {
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-        
-        .participants-list {
-            margin-top: 1rem;
-            max-height: 300px;
-            overflow-y: auto;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 1rem;
-        }
-        
-        .participant-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .export-btn {
-            background-color: var(--success);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
-        
-        /* Floating Menu */
-        .floating-menu {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 99;
-        }
-        
-        .menu-trigger {
-            background-color: var(--accent);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
-            font-size: 1.25rem;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-        }
-        
-        .menu-trigger:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-3px);
-        }
-        
-        .menu-items {
-            position: absolute;
-            bottom: 60px;
-            right: 0;
-            background-color: var(--secondary);
-            border-radius: 8px;
-            padding: 0.5rem 0;
-            min-width: 180px;
-            display: none;
-            flex-direction: column;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .menu-items a {
-            padding: 0.75rem 1.5rem;
-            color: var(--text);
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        
-        .menu-items a:hover {
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--accent);
-        }
-        
-        .floating-menu.open .menu-items {
-            display: flex;
-        }
-        
-        /* Password Modal */
-        .password-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .password-content {
-            background-color: var(--secondary);
-            padding: 2rem;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 400px;
-        }
-        
-        .password-input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background-color: var(--primary);
-            color: var(--text);
-            margin-bottom: 1rem;
-        }
-        
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -566,25 +377,8 @@
                 text-align: center;
             }
             
-            .back-to-top, .floating-menu {
-                bottom: 1rem;
-            }
-            
-            .back-to-top {
-                left: 1rem;
-            }
-            
-            .floating-menu {
-                right: 1rem;
-            }
-            
             .airdrop-box {
                 padding: 2rem 1.5rem;
-            }
-            
-            .admin-panel {
-                top: 10px;
-                right: 10px;
             }
         }
     </style>
@@ -606,35 +400,6 @@
             </div>
         </div>
     </header>
-
-    <!-- Admin Panel (Hidden by default) -->
-    <div class="admin-panel" id="admin-panel">
-        <button class="admin-btn" id="admin-toggle">Admin</button>
-    </div>
-
-    <!-- Admin Modal -->
-    <div class="admin-modal" id="admin-modal">
-        <div class="admin-content">
-            <h3>Admin Panel - Airdrop Participants</h3>
-            <p>Total participants: <span id="participant-count">0</span></p>
-            <div class="participants-list" id="participants-list">
-                <!-- Participants will be listed here -->
-            </div>
-            <button class="export-btn" id="export-btn">Export to CSV</button>
-            <button class="admin-btn" id="close-admin" style="margin-left: 10px;">Close</button>
-        </div>
-    </div>
-
-    <!-- Password Modal -->
-    <div class="password-modal" id="password-modal">
-        <div class="password-content">
-            <h3>Admin Access</h3>
-            <p>Enter admin password:</p>
-            <input type="password" class="password-input" id="admin-password" placeholder="Password">
-            <button class="btn" id="submit-password">Submit</button>
-            <button class="btn btn-outline" id="cancel-password" style="margin-left: 10px;">Cancel</button>
-        </div>
-    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -710,11 +475,6 @@
                         <span class="lang-content">Richiedi Airdrop</span>
                         <span class="lang-content">Reclamar Airdrop</span>
                     </button>
-                    <button id="switch-network" class="btn btn-warning" style="display: none;">
-                        <span class="lang-content active">Switch to Polygon</span>
-                        <span class="lang-content">Passa a Polygon</span>
-                        <span class="lang-content">Cambiar a Polygon</span>
-                    </button>
                     
                     <p style="margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-secondary);">
                         <i class="fas fa-exclamation-circle"></i> 
@@ -756,28 +516,6 @@
         </div>
     </footer>
 
-    <!-- Back to top button -->
-    <button class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Floating Menu -->
-    <div class="floating-menu" id="floating-menu">
-        <button class="menu-trigger">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="menu-items">
-            <a href="http://deflationarybtc.online/">Home</a>
-            <a href="https://dwjcrypto.com/pdf/DeflationaryBTC_Airdrop_About.pdf" target="_blank">About</a>
-            <a href="https://app.uniswap.org/positions/v4/polygon/44797" target="_blank">Uniswap</a>
-            <a href="https://dapp.quickswap.exchange/pool/positions?chainId=137" target="_blank">Quickswap</a>
-            <a href="https://www.sushi.com/polygon/pool/v3/0xc904b06eb917660593d8e8ec0f5f379e6cb85057/create" target="_blank" >Sushiswap</a>
-            <a href="https://github.com/pdf/DBTC_Whitepaper.pdf" target="_blank">Whitepaper</a>
-            <a href="https://dwjcrypto.com/pdf/Overview.pdf" target="_blank" >Overview</a>
-            <a href="#" id="show-admin">Admin Access</a>
-        </div>
-    </div>
-
     <script>
         // Language Switching Functionality
         document.addEventListener('DOMContentLoaded', function() {
@@ -811,144 +549,14 @@
                 });
             });
 
-            // Back to top button
-            const backToTopButton = document.querySelector('.back-to-top');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopButton.style.display = 'flex';
-                } else {
-                    backToTopButton.style.display = 'none';
-                }
-            });
-            
-            backToTopButton.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Floating menu functionality
-            const menuTrigger = document.querySelector('.menu-trigger');
-            const floatingMenu = document.getElementById('floating-menu');
-            
-            menuTrigger.addEventListener('click', function(e) {
-                e.stopPropagation();
-                floatingMenu.classList.toggle('open');
-            });
-
-            // Close menu when clicking outside
-            document.addEventListener('click', function() {
-                floatingMenu.classList.remove('open');
-            });
-
-            // Airdrop participants storage
-            let airdropParticipants = JSON.parse(localStorage.getItem('airdropParticipants')) || [];
-            
-            // Update participant count
-            function updateParticipantCount() {
-                document.getElementById('participant-count').textContent = airdropParticipants.length;
-            }
-            
-            // Update participants list
-            function updateParticipantsList() {
-                const list = document.getElementById('participants-list');
-                list.innerHTML = '';
-                
-                airdropParticipants.forEach((participant, index) => {
-                    const item = document.createElement('div');
-                    item.className = 'participant-item';
-                    item.innerHTML = `
-                        <span>${index + 1}. ${participant.wallet}</span>
-                        <span>${new Date(participant.timestamp).toLocaleString()}</span>
-                    `;
-                    list.appendChild(item);
-                });
-            }
-            
-            // Admin panel functionality
-            const adminPanel = document.getElementById('admin-panel');
-            const adminToggle = document.getElementById('admin-toggle');
-            const adminModal = document.getElementById('admin-modal');
-            const closeAdmin = document.getElementById('close-admin');
-            const exportBtn = document.getElementById('export-btn');
-            const passwordModal = document.getElementById('password-modal');
-            const submitPassword = document.getElementById('submit-password');
-            const cancelPassword = document.getElementById('cancel-password');
-            const showAdmin = document.getElementById('show-admin');
-            
-            // Show admin access option in menu
-            showAdmin.addEventListener('click', function(e) {
-                e.preventDefault();
-                passwordModal.style.display = 'flex';
-                floatingMenu.classList.remove('open');
-            });
-            
-            // Submit password
-            submitPassword.addEventListener('click', function() {
-                const password = document.getElementById('admin-password').value;
-                // Simple password check - change 'admin123' to your preferred password
-                if (password === 'admin123') {
-                    passwordModal.style.display = 'none';
-                    adminPanel.style.display = 'block';
-                    document.getElementById('admin-password').value = '';
-                } else {
-                    alert('Incorrect password');
-                }
-            });
-            
-            // Cancel password entry
-            cancelPassword.addEventListener('click', function() {
-                passwordModal.style.display = 'none';
-                document.getElementById('admin-password').value = '';
-            });
-            
-            // Admin panel toggle
-            adminToggle.addEventListener('click', function() {
-                updateParticipantCount();
-                updateParticipantsList();
-                adminModal.style.display = 'flex';
-            });
-            
-            closeAdmin.addEventListener('click', function() {
-                adminModal.style.display = 'none';
-            });
-            
-            // Export to CSV
-            exportBtn.addEventListener('click', function() {
-                const csvContent = "data:text/csv;charset=utf-8," 
-                    + "Wallet Address,Timestamp\n" 
-                    + airdropParticipants.map(p => `"${p.wallet}","${p.timestamp}"`).join("\n");
-                
-                const encodedUri = encodeURI(csvContent);
-                const link = document.createElement("a");
-                link.setAttribute("href", encodedUri);
-                link.setAttribute("download", "airdrop_participants.csv");
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            });
-            
-            // Close modals when clicking outside
-            adminModal.addEventListener('click', function(e) {
-                if (e.target === adminModal) {
-                    adminModal.style.display = 'none';
-                }
-            });
-            
-            passwordModal.addEventListener('click', function(e) {
-                if (e.target === passwordModal) {
-                    passwordModal.style.display = 'none';
-                    document.getElementById('admin-password').value = '';
-                }
-            });
-
             // Wallet Connection Functionality
             const connectBtn = document.getElementById('connect-wallet');
             const claimBtn = document.getElementById('claim-airdrop');
-            const switchBtn = document.getElementById('switch-network');
             const statusDiv = document.getElementById('wallet-status');
             
             let web3;
             let currentAccount = null;
+            let airdropParticipants = JSON.parse(localStorage.getItem('airdropParticipants')) || [];
             
             // Initialize on page load
             window.addEventListener('load', async () => {
@@ -956,10 +564,14 @@
                     web3 = new Web3(window.ethereum);
                     
                     // Check if already connected
-                    const accounts = await web3.eth.getAccounts();
-                    if (accounts.length > 0) {
-                        currentAccount = accounts[0];
-                        await checkNetworkAndBalance();
+                    try {
+                        const accounts = await web3.eth.getAccounts();
+                        if (accounts.length > 0) {
+                            currentAccount = accounts[0];
+                            await checkNetworkAndBalance();
+                        }
+                    } catch (error) {
+                        console.error('Error checking accounts:', error);
                     }
                     
                     // Set up event listeners for account and network changes
@@ -984,8 +596,10 @@
             
             // Handle network changes
             function handleChainChanged(chainId) {
-                // Reload the page when network changes
-                window.location.reload();
+                // When network changes, check the new network
+                setTimeout(async () => {
+                    await checkNetworkAndBalance();
+                }, 500);
             }
             
             // Connect wallet button
@@ -1017,56 +631,6 @@
                 }
             });
             
-            // Switch network button
-            switchBtn.addEventListener('click', async () => {
-                try {
-                    await window.ethereum.request({
-                        method: 'wallet_switchEthereumChain',
-                        params: [{ chainId: '0x89' }], // Polygon Mainnet
-                    });
-                    
-                    // After switching, check the network again
-                    setTimeout(async () => {
-                        await checkNetworkAndBalance();
-                    }, 1000);
-                    
-                } catch (switchError) {
-                    // This error code indicates that the chain has not been added to MetaMask
-                    if (switchError.code === 4902) {
-                        try {
-                            await window.ethereum.request({
-                                method: 'wallet_addEthereumChain',
-                                params: [
-                                    {
-                                        chainId: '0x89',
-                                        chainName: 'Polygon Mainnet',
-                                        rpcUrls: ['https://polygon-rpc.com/'],
-                                        blockExplorerUrls: ['https://polygonscan.com/'],
-                                        nativeCurrency: {
-                                            name: 'POL',
-                                            symbol: 'POL',
-                                            decimals: 18
-                                        },
-                                    },
-                                ],
-                            });
-                            
-                            // After adding, check the network again
-                            setTimeout(async () => {
-                                await checkNetworkAndBalance();
-                            }, 1000);
-                            
-                        } catch (addError) {
-                            console.error('Error adding Polygon network:', addError);
-                            updateStatus('Failed to add Polygon network. Please add it manually.', 'error');
-                        }
-                    } else {
-                        console.error('Error switching network:', switchError);
-                        updateStatus('Failed to switch to Polygon network.', 'error');
-                    }
-                }
-            });
-            
             // Claim airdrop button
             claimBtn.addEventListener('click', async () => {
                 if (!currentAccount) {
@@ -1078,9 +642,6 @@
                 const chainId = await web3.eth.getChainId();
                 if (chainId !== 137) {
                     updateStatus('Please switch to Polygon Mainnet to claim the airdrop.', 'warning');
-                    connectBtn.style.display = 'none';
-                    claimBtn.style.display = 'none';
-                    switchBtn.style.display = 'inline-block';
                     return;
                 }
                 
@@ -1105,10 +666,6 @@
                 // Save to localStorage
                 localStorage.setItem('airdropParticipants', JSON.stringify(airdropParticipants));
                 
-                // Update admin panel
-                updateParticipantCount();
-                updateParticipantsList();
-                
                 // Simulate transaction delay
                 setTimeout(() => {
                     updateStatus('Airdrop claimed successfully! 100 DBTC tokens will be sent to your wallet.', 'success');
@@ -1125,9 +682,8 @@
                 
                 if (chainId !== 137) { // Not on Polygon
                     updateStatus('Please switch to Polygon Mainnet to continue.', 'warning');
-                    connectBtn.style.display = 'none';
+                    connectBtn.style.display = 'inline-block';
                     claimBtn.style.display = 'none';
-                    switchBtn.style.display = 'inline-block';
                     return;
                 }
                 
@@ -1139,7 +695,6 @@
                     updateStatus(`Wallet connected but has insufficient POL balance (${parseFloat(polBalance).toFixed(4)} POL). Minimum 0.01 POL required.`, 'error');
                     connectBtn.style.display = 'none';
                     claimBtn.style.display = 'none';
-                    switchBtn.style.display = 'none';
                     return;
                 }
                 
@@ -1154,12 +709,10 @@
                     claimBtn.style.display = 'inline-block';
                     claimBtn.disabled = true;
                     claimBtn.textContent = 'Already Claimed';
-                    switchBtn.style.display = 'none';
                 } else {
                     updateStatus(`Wallet connected! Address: ${currentAccount.substring(0, 10)}... Balance: ${parseFloat(polBalance).toFixed(4)} POL`, 'success');
                     connectBtn.style.display = 'none';
                     claimBtn.style.display = 'inline-block';
-                    switchBtn.style.display = 'none';
                 }
             }
             
@@ -1169,7 +722,6 @@
                 statusDiv.style.display = 'none';
                 connectBtn.style.display = 'inline-block';
                 claimBtn.style.display = 'none';
-                switchBtn.style.display = 'none';
                 currentAccount = null;
             }
             
@@ -1200,13 +752,7 @@
                 
                 statusDiv.style.display = 'block';
             }
-            
-            // Initialize participant count
-            updateParticipantCount();
         });
     </script>
 </body>
 </html>
-</html>
-
-
