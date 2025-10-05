@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DeflationaryBTC (DBTC)</title>
     <link rel="icon" type="image/svg+xml" href="https://www.dwjcrypto.com/eth/DBTC.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,21 +22,29 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            max-width: 100%;
+        }
+        
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+            position: relative;
         }
         
         body {
             background-color: var(--primary);
             color: var(--text);
             line-height: 1.5;
-            overflow-x: hidden;
             background-image: url('https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
+            min-height: 100vh;
         }
         
+        /* FIX PRINCIPALE: Container che funziona su tutti i dispositivi */
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 15px;
@@ -51,12 +59,14 @@
             z-index: 1000;
             border-bottom: 1px solid var(--border);
             backdrop-filter: blur(10px);
+            width: 100%;
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
         
         .logo {
@@ -68,6 +78,7 @@
         .logo img {
             height: 40px;
             width: auto;
+            max-width: 100%;
         }
         
         .logo-text {
@@ -111,11 +122,12 @@
             background-image: url('https://flagcdn.com/w40/es.png');
         }
         
-        /* Hero Section */
+        /* Hero Section - FIX CRITICO */
         .hero {
             padding: 5rem 0 3rem;
             text-align: center;
             position: relative;
+            width: 100%;
         }
         
         .hero::before {
@@ -133,6 +145,7 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
+            word-wrap: break-word;
         }
         
         .hero p {
@@ -140,6 +153,7 @@
             max-width: 700px;
             margin: 0 auto 1.5rem;
             color: var(--text-secondary);
+            word-wrap: break-word;
         }
         
         .contract-address {
@@ -152,6 +166,38 @@
             font-family: 'Courier New', monospace;
             font-size: 0.9rem;
             border: 1px solid rgba(37, 99, 235, 0.2);
+            overflow-wrap: break-word;
+        }
+        
+        /* FIX PER GLI ANNUNCI - CRITICO PER MOBILE */
+        .burn-event, .community-update {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .burn-event {
+            background: #111;
+            border-left: 4px solid #e63946;
+        }
+        
+        .community-update {
+            background: #0d0d0d;
+            border-left: 4px solid #2a9d8f;
+        }
+        
+        .burn-event h2, .community-update h2 {
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+        
+        .burn-event a, .community-update a {
+            color: #93c5fd;
+            word-break: break-all;
         }
         
         .btn {
@@ -188,6 +234,7 @@
         /* Sections */
         section {
             padding: 3rem 0;
+            width: 100%;
         }
         
         .section-title {
@@ -278,6 +325,7 @@
             color: white;
             padding: 2rem 0 1rem;
             border-top: 1px solid var(--border);
+            width: 100%;
         }
         
         .footer-content {
@@ -410,7 +458,7 @@
             display: block;
         }
         
-        /* Responsive */
+        /* Responsive - FIX CRITICO PER ANDROID */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
@@ -418,6 +466,7 @@
             
             .hero p {
                 font-size: 1rem;
+                padding: 0 10px;
             }
             
             .section-title {
@@ -445,6 +494,47 @@
             .card-container {
                 grid-template-columns: 1fr;
             }
+            
+            .burn-event, .community-update {
+                padding: 15px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .burn-event h2, .community-update h2 {
+                font-size: 1.2rem;
+            }
+            
+            /* FIX PER IL ZOOM SU ANDROID */
+            body {
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+        }
+        
+        /* FIX EXTRA PER DISPOSITIVI MOLTO PICCOLI */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 0 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .contract-address {
+                font-size: 0.8rem;
+                padding: 0.6rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -467,77 +557,50 @@
     </header>
 
     <!-- Hero Section -->
-<section class="hero">
-    <div class="container">
+    <section class="hero">
         <!-- English Content -->
         <div class="lang-content active" id="hero-en">
-        <div class="container"> <!-- Each content block gets its own container -->
-            <h1>DeflationaryBTC (DBTC)</h1>
-            <p>The revolutionary deflationary token with automatic burn mechanism and rewards for liquidity providers, long holders, and stakers.</p>
-            <div class="contract-address">
-                Contract: 0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7
-            </div>
-            <a href="https://dwjcrypto.com/pdf/Learn_More.pdf" class="btn">Learn More</a>
-            <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" class="btn btn-outline" target="_blank">View Contract</a>
+            <div class="container">
+                <h1>DeflationaryBTC (DBTC)</h1>
+                <p>The revolutionary deflationary token with automatic burn mechanism and rewards for liquidity providers, long holders, and stakers.</p>
+                <div class="contract-address">
+                    Contract: 0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7
+                </div>
+                <a href="https://dwjcrypto.com/pdf/Learn_More.pdf" class="btn">Learn More</a>
+                <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" class="btn btn-outline" target="_blank">View Contract</a>
 
-            <!-- 🔥 Burn Event Announcement -->
-            <div class="burn-event" style="margin-top: 30px; padding: 20px; background: #111; border-left: 4px solid #e63946; border-radius: 8px;">
-                <h2 style="color: #e63946; margin-bottom: 10px;">🔥 Official Burn Event</h2>
-                <p><strong>Date:</strong> October 3, 2025</p>
-                <p><strong>Amount Burned:</strong> 600,000,000 DBTC</p>
-                <p><strong>Burn Address:</strong> <code>0x0000000000000000000000000000000000000000</code></p>
-                <p><strong>Transaction:</strong> <a href="https://polygonscan.com/tx/0xebf5f8794414cd3f7718ea10126ccafbeca99104e06a8c96f533ac067158e839" target="_blank" style="color: #93c5fd;">View on Polygonscan</a></p>
-                <p><em>Commitment to decentralization & immutable deflationary mechanics.</em></p>
-            </div>
+                <!-- 🔥 Burn Event Announcement -->
+                <div class="burn-event">
+                    <h2 style="color: #e63946; margin-bottom: 10px;">🔥 Official Burn Event</h2>
+                    <p><strong>Date:</strong> October 3, 2025</p>
+                    <p><strong>Amount Burned:</strong> 600,000,000 DBTC</p>
+                    <p><strong>Burn Address:</strong> <code>0x0000000000000000000000000000000000000000</code></p>
+                    <p><strong>Transaction:</strong> <a href="https://polygonscan.com/tx/0xebf5f8794414cd3f7718ea10126ccafbeca99104e06a8c96f533ac067158e839" target="_blank">View on Polygonscan</a></p>
+                    <p><em>Commitment to decentralization & immutable deflationary mechanics.</em></p>
+                </div>
 
-            <!-- 📢 Official Community Communication -->
-            <div class="community-update" style="margin-top: 30px; padding: 20px; background: #0d0d0d; border-left: 4px solid #2a9d8f; border-radius: 8px;">
-                <h2 style="color: #2a9d8f; margin-bottom: 10px;">📢 Official Community Update — Security Tests & Migration Completed</h2>
-                <p>Today marks a <strong>major milestone</strong> for our community and project integrity.</p>
-                <ul style="margin-left: 20px; line-height: 1.6;">
-                    <li>✅ Comprehensive security tests successfully completed.</li>
-                    <li>✅ Liquidity was temporarily removed for migration and safety validation.</li>
-                    <li>✅ All simulated attack vectors were analyzed and <strong>passed with no vulnerabilities</strong>.</li>
-                    <li>✅ All tokens have been successfully returned to the main contract.</li>
-                    <li>✅ Fee exclusion for routers is now being implemented via secure script execution.</li>
-                </ul>
-                <p>The results confirm that <strong>DeflationaryBTC (DBTC)</strong> operates safely and transparently under stress conditions.  
-                Our commitment to decentralization, security, and transparency remains unshakable.</p>
-                <p><em>More updates will follow as we continue toward the next milestones, including future burns, community governance, and staking expansion.</em></p>
-                <p style="margin-top: 15px;"><strong>— DWJ Team / DeflationaryBTC Project</strong></p>
+                <!-- 📢 Official Community Communication -->
+                <div class="community-update">
+                    <h2 style="color: #2a9d8f; margin-bottom: 10px;">📢 Official Community Update — Security Tests & Migration Completed</h2>
+                    <p>Today marks a <strong>major milestone</strong> for our community and project integrity.</p>
+                    <ul style="margin-left: 20px; line-height: 1.6;">
+                        <li>✅ Comprehensive security tests successfully completed.</li>
+                        <li>✅ Liquidity was temporarily removed for migration and safety validation.</li>
+                        <li>✅ All simulated attack vectors were analyzed and <strong>passed with no vulnerabilities</strong>.</li>
+                        <li>✅ All tokens have been successfully returned to the main contract.</li>
+                        <li>✅ Fee exclusion for routers is now being implemented via secure script execution.</li>
+                    </ul>
+                    <p>The results confirm that <strong>DeflationaryBTC (DBTC)</strong> operates safely and transparently under stress conditions.  
+                    Our commitment to decentralization, security, and transparency remains unshakable.</p>
+                    <p><em>More updates will follow as we continue toward the next milestones, including future burns, community governance, and staking expansion.</em></p>
+                    <p style="margin-top: 15px;"><strong>— DWJ Team / DeflationaryBTC Project</strong></p>
+                </div>
             </div>
         </div>
-    </div>
-            
-    <!-- Italian Content -->
-    <div class="lang-content" id="hero-it">
-        <div class="container">
-            <h1>DeflationaryBTC (DBTC)</h1>
-            <p>Il token deflazionario rivoluzionario con meccanismo di bruciatura automatica e ricompense per provider di liquidità, holder long e staker.</p>
-            <div class="contract-address">
-                Contratto: 0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7
-            </div>
-            <a href="https://dwjcrypto.com/pdf/Learn_More.pdf" class="btn">Scopri di Più</a>
-            <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" class="btn btn-outline" target="_blank">Vedi Contratto</a>
-        </div>
-    </div>
-    
-    <!-- Spanish Content -->
-    <div class="lang-content" id="hero-es">
-        <div class="container">
-            <h1>DeflationaryBTC (DBTC)</h1>
-            <p>La token deflacionaria revolucionaria con mecanismo de quema automática y recompensas para proveedores de liquidez, holders largos y stakers.</p>
-            <div class="contract-address">
-                Contrato: 0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7
-            </div>
-            <a href="https://dwjcrypto.com/pdf/Learn_More.pdf" class="btn">Saber Más</a>
-            <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" class="btn btn-outline" target="_blank">Ver Contrato</a>
-        </div>
-    </div>
-</section>
-            
-            <!-- Italian Content -->
-            <div class="lang-content" id="hero-it">
+                
+        <!-- Italian Content -->
+        <div class="lang-content" id="hero-it">
+            <div class="container">
                 <h1>DeflationaryBTC (DBTC)</h1>
                 <p>Il token deflazionario rivoluzionario con meccanismo di bruciatura automatica e ricompense per provider di liquidità, holder long e staker.</p>
                 <div class="contract-address">
@@ -546,9 +609,11 @@
                 <a href="https://dwjcrypto.com/pdf/Learn_More.pdf" class="btn">Scopri di Più</a>
                 <a href="https://polygonscan.com/address/0xb0bf4c35dcf8e47f9b61c5b07b0cadd2945544e7" class="btn btn-outline" target="_blank">Vedi Contratto</a>
             </div>
-            
-            <!-- Spanish Content -->
-            <div class="lang-content" id="hero-es">
+        </div>
+        
+        <!-- Spanish Content -->
+        <div class="lang-content" id="hero-es">
+            <div class="container">
                 <h1>DeflationaryBTC (DBTC)</h1>
                 <p>La token deflacionaria revolucionaria con mecanismo de quema automática y recompensas para proveedores de liquidez, holders largos y stakers.</p>
                 <div class="contract-address">
@@ -560,6 +625,7 @@
         </div>
     </section>
 
+    <!-- Il resto del codice rimane invariato -->
     <!-- About Section -->
     <section id="about">
         <div class="container">
