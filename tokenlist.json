@@ -1,0 +1,17 @@
+{
+  "name": "DBTCTokneList",
+  "logoURI": "https://josa123.github.io/token-assets/DBTC.svg",
+  "keywords": ["DBTC","token"],
+  "timestamp": "2025-10-08T00:00:00Z",
+  "version": { "major": 1, "minor": 0, "patch": 0 },
+  "tokens": [
+    {
+      "chainId": 137,
+      "address": "<0xB0Bf4C35dCF8E47F9b61C5b07B0cadd2945544E7>",
+      "symbol": "<DBTC>",
+      "name": "<DeflationaryBTC>",
+      "decimals": <18>,
+      "logoURI": "https://josat123.github.io/token-assets/DBTC.svg"
+    }
+  ]
+}
