@@ -1,7 +1,7 @@
 # DeflationaryBTC (DBTC)
 
 <p align="center">
-  <img src="./assets/dbtc_logo.png" alt="DBTC Logo" width="150"/>
+  <img src="./assets/DBTC_logo.png" alt="DBTC Logo" width="150"/>
 </p>
 
 <h1 align="center">DeflationaryBTC (DBTC)</h1>
