@@ -1,7 +1,7 @@
 # DeflationaryBTC (DBTC)
 
 <p align="center">
-  <img src="./assets/DBTC_logo.png" alt="DBTC Logo" width="150"/>
+  <img src="DBTC_logo.png" alt="DBTC Logo" width="150"/>
 </p>
 
 <h1 align="center">DeflationaryBTC (DBTC)</h1>
@@ -16,7 +16,6 @@
   <a href="https://polygon.technology/"><img src="https://img.shields.io/badge/Network-Polygon-8247e5.svg" alt="Polygon"></a>
   <img src="https://img.shields.io/badge/Audit-Verified-brightgreen" alt="Audit Status">
 </p>
-
 ---
 
 ## 📖 Overview
