@@ -22,8 +22,11 @@
 **DeflationaryBTC (DBTC)** is an advanced ERC20 smart contract deployed on the **Polygon Mainnet**, designed to integrate **deflationary economics, staking, long-hold incentives, and automated liquidity mechanisms**.  
 It is not a simple token but a **full-featured protocol** aimed at balancing scarcity, utility, and community-driven incentives.
 
-**Deployed Contract:**  
-[`0xB0Bf4C35dCF8E47F9b61C5b07B0cadd2945544E7`](https://polygonscan.com/address/0xB0Bf4C35dCF8E47F9b61C5b07B0cadd2945544E7)
+** 📊 Deployed Contract Addresses:**  
+
+Polygon Mainnet: [`0xB0Bf4C35dCF8E47F9b61C5b07B0cadd2945544E7`](https://polygonscan.com/address/0xB0Bf4C35dCF8E47F9b61C5b07B0cadd2945544E7)
+
+Polygon Amoy tesnet: [`0x330F310b6Eda04A9477564b5CaA97904EabE67c5`](https://amoy.polygonscan.com/token/0x330f310b6eda04a9477564b5caa97904eabe67c5)
 
 **📄 Whitepaper:**  
 [Download DBTC Whitepaper v1.0 (September 2025)](https://dwjcrypto.com/pdf/DBTC_Whitepaper_v1.0.pdf)
