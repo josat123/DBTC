@@ -1,8 +1,8 @@
-# 🪙 DeflationaryBTC (DBTC) — Tokenomics Summary
+# 🪙 DeflationaryBTC (DBTC) — Tokenomics Overview
 
 ## 🌍 Overview
-**DeflationaryBTC (DBTC)** è un token decentralizzato costruito su **Polygon PoS**, progettato per combinare la stabilità e il valore simbolico del Bitcoin con una **struttura deflazionaria automatica**.  
-Il suo obiettivo è creare un ecosistema sostenibile che incentivi la detenzione a lungo termine e protegga il valore attraverso burn progressivi e liquidità decentralizzata.
+**DeflationaryBTC (DBTC)** is a decentralized token built on the **Polygon PoS** network.  
+It combines the symbolic value of Bitcoin with a **deflationary economic model** that ensures long-term sustainability and scarcity through progressive burn events and decentralized liquidity.
 
 - **Token Name:** DeflationaryBTC  
 - **Symbol:** DBTC  
@@ -19,10 +19,10 @@ Il suo obiettivo è creare un ecosistema sostenibile che incentivi la detenzione
 
 | Type | Amount (DBTC) | Description |
 |------|----------------|-------------|
-| **Total Supply** | 1,400,000,000 | Supply iniziale creata al TGE |
-| **Max Supply** | 1,400,000,000 | Supply totale fissa (no minting) |
-| **Circulating Supply** | Variabile | Basata su DEX e burn periodici |
-| **Decimals** | 18 | Precisione standard ERC20 |
+| **Total Supply** | 1,400,000,000 | Initial total supply created at TGE |
+| **Max Supply** | 1,400,000,000 | Fixed supply (no additional minting) |
+| **Circulating Supply** | Dynamic | Adjusted by burn and liquidity events |
+| **Decimals** | 18 | Standard ERC-20 precision |
 
 ---
 
@@ -30,29 +30,29 @@ Il suo obiettivo è creare un ecosistema sostenibile che incentivi la detenzione
 
 | Category | Allocation | % | Details |
 |-----------|-------------|---|----------|
-| **DEX Liquidity (Uniswap + SushiSwap)** | 700,000,000 | 50% | Allocati per garantire stabilità di mercato e libero accesso alla liquidità |
-| **Burn Reserve** | 500,000,000 | 35.7% | 300M destinati al burn pubblico + 200M al burn del team |
-| **Team & Development** | 90,000,000 | 6.4% | Bloccati in smart contract con vesting progressivo |
-| **Airdrop & Community Rewards** | 20,000,000 | 1.4% | Distribuiti agli early supporters |
-| **Reserve (Future Ecosystem)** | 90,000,000 | 6.4% | Per staking, bridge e nuove integrazioni |
+| **DEX Liquidity (Uniswap + SushiSwap)** | 700,000,000 | 50% | Provides deep and stable liquidity across decentralized exchanges |
+| **Burn Reserve** | 500,000,000 | 35.7% | 300M for Q1 burns + 200M for Q2 burn events |
+| **Team & Development** | 90,000,000 | 6.4% | Locked with vesting to ensure long-term commitment |
+| **Airdrop & Community Rewards** | 20,000,000 | 1.4% | Distributed to early adopters and contributors |
+| **Ecosystem Reserve** | 90,000,000 | 6.4% | Reserved for future staking, partnerships, and bridge integration |
 
 ---
 
 ## 🔥 Deflationary Model
 
-- **Auto-Burn Events:** Burn manuali e programmati riducono la supply totale nel tempo.  
-- **Liquidity Locked:** Parte della liquidità DEX è permanentemente bloccata per garantire stabilità di mercato.  
-- **No Mint Function:** La supply è fissa — nessuna possibilità di emissione aggiuntiva.  
-- **Team Vesting:** I token del team hanno un **cliff di 6 mesi** e un **vesting lineare su 24 mesi**.  
+- **Manual & Scheduled Burns:** Regular deflation events reduce total supply permanently.  
+- **Liquidity Locked:** DEX liquidity is partially locked to ensure market stability.  
+- **No Mint Function:** Fixed total supply — no new tokens can ever be created.  
+- **Team Vesting:** 6-month cliff, followed by linear vesting over 24 months.  
 
 ---
 
 ## ⚙️ Utilities & Use Cases
 
-- Utilizzo nei protocolli **DWJ DeFi** (staking, liquidity mining, governance).  
-- Accesso ai **bridge multi-chain DWJ**.  
-- Partecipazione a eventi promozionali e **ticket vincenti** dell’ecosistema DWJ.  
-- Utilità in futuro per **protocol staking** e servizi **DeFi cross-chain**.  
+- Integrated into the **DWJ DeFi** ecosystem (staking, liquidity mining, governance).  
+- Usable across **DWJ multi-chain bridges** for cross-network transfers.  
+- Access to **reward programs** and **winning ticket events** within the DWJ ecosystem.  
+- Designed for future implementation in **staking protocols** and **DeFi modules**.  
 
 ---
 
@@ -60,7 +60,7 @@ Il suo obiettivo è creare un ecosistema sostenibile che incentivi la detenzione
 
 - 🌐 [Official Website](https://dwjcrypto.com)  
 - 📜 [Whitepaper](https://dwjcrypto.com/whitepaper)  
-- 🔍 [PolygonScan](https://polygonscan.com/token/0xB0Bf4C35dCF8E47F9b61C5b07B0cadd2945544E7)  
+- 🔍 [PolygonScan Explorer](https://polygonscan.com/token/0xB0Bf4C35dCF8E47F9b61C5b07B0cadd2945544E7)  
 - 🧪 [Blockaid Audit Report](https://dwjcrypto.com/audit/blockaid)  
 - 💬 [Telegram Community](https://t.me/dwjcrypto)  
 - 🐦 [Twitter/X](https://x.com/dwjcrypto)  
@@ -72,19 +72,19 @@ Il suo obiettivo è creare un ecosistema sostenibile che incentivi la detenzione
 
 | Event | Percentage | Cliff | Vesting Period | Frequency |
 |--------|-------------|--------|----------------|-------------|
-| **Team Allocation** | 6.4% | 6 mesi | 24 mesi | Mensile |
-| **Community Rewards** | 1.4% | Nessuno | 3 mesi | Settimanale |
-| **Burn Schedule** | 35.7% | — | Programmato | Manuale |
-| **Liquidity Unlock** | 50% | — | Locked | Permanente |
+| **Team Allocation** | 6.4% | 6 months | 24 months | Monthly |
+| **Community Rewards** | 1.4% | None | 3 months | Weekly |
+| **Burn Schedule** | 35.7% | — | Programmed | Manual |
+| **Liquidity Unlock** | 50% | — | Locked | Permanent |
 
 ---
 
 ## 🧭 Summary
 
-DeflationaryBTC (DBTC) rappresenta un token deflazionario solido e trasparente, costruito per resistere alle manipolazioni di mercato e mantenere valore nel lungo periodo.  
-Con supply fissa, burn controllati, vesting trasparente e liquidità decentralizzata, DBTC si propone come un asset **autonomo, sostenibile e sicuro** nell’ecosistema Polygon.
+DeflationaryBTC (DBTC) represents a solid, transparent, and deflationary asset designed to preserve value and build long-term trust.  
+With a fixed supply, audited contracts, controlled burns, and a decentralized liquidity foundation, DBTC stands as a **secure and sustainable asset** within the Polygon ecosystem.
 
 ---
 
 © 2025 DWJ Crypto — All rights reserved.  
-Licensed under MIT License. 
+Licensed under MIT License.  
