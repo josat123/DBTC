@@ -117,7 +117,7 @@ MIT License
 yaml
 
 ---
-**DeflationaryBTC (DBTC) – Risk Clarification Report:**
+## DeflationaryBTC (DBTC) – Risk Clarification Report
 ## Overview
 
 Following an automated scan by De.Fi, several “High Risk” issues were flagged for the DeflationaryBTC smart contract.
