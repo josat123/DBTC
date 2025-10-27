@@ -117,8 +117,8 @@ MIT License
 yaml
 
 ---
-## DeflationaryBTC (DBTC) – Risk Clarification Report
-## Overview
+ DeflationaryBTC (DBTC) – Risk Clarification Report
+ Overview 👇
 
 Following an automated scan by De.Fi, several “High Risk” issues were flagged for the DeflationaryBTC smart contract.
 After a full technical review, we confirm these are false positives.
@@ -160,7 +160,7 @@ The scanner mistakenly identified internal exclusions (e.g., isExcludedFromFee) 
 
 ✅ Reality: No central control, only internal safety logic.
 
-## Summary
+ Summary
 
 “All issues flagged by De.Fi are standard protective or deflationary mechanisms, not vulnerabilities.
 The DBTC contract uses OpenZeppelin libraries, an immutable 0.2% fee distributed between DAO and Treasury, and a Pausable mechanism strictly for emergency protection.
