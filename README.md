@@ -60,11 +60,11 @@ Polygon Amoy tesnet: [`0x330F310b6Eda04A9477564b5CaA97904EabE67c5`](https://amoy
 - **Initial Supply:** `2,000,000,000 DBTC`  
 - **Final Supply Cap:** `21,000,000 DBTC`  
 - **Fee on Transfers:** 2%
-- **DEX Liquidity (Uniswap + SushiSwap) 	700,000,000 	50% 	
-- **Burn Reserve 	500,000,000 	35.7% 	300M 
-- **Team & Development 	90,000,000 	6.4% 	
-- **Airdrop & Community Rewards 	20,000,000 	1.4% 	
-- **Ecosystem Reserve 	90,000,000 	6.4% 	
+- **DEX Liquidity (Uniswap + SushiSwap):** 	`700,000,000 	50%` 	
+- **Burn Reserve:** 	`500,000,000 	35.7% 	300M` 
+- **Team & Development:** 	`90,000,000 	6.4%` 	
+- **Airdrop & Community:** `Rewards 	20,000,000 	1.4%` 	
+- **Ecosystem Reserve:** 	`90,000,000 	6.4%` 	
 ---
 
 ## 🛠️ Development
@@ -117,7 +117,7 @@ MIT License
 yaml
 
 
-DeflationaryBTC (DBTC) – Risk Clarification Report
+# DeflationaryBTC (DBTC) – Risk Clarification Report
 Overview
 
 Following an automated scan by De.Fi, several “High Risk” issues were flagged for the DeflationaryBTC smart contract.
@@ -160,7 +160,7 @@ The scanner mistakenly identified internal exclusions (e.g., isExcludedFromFee) 
 
 ✅ Reality: No central control, only internal safety logic.
 
-Summary
+# Summary
 
 “All issues flagged by De.Fi are standard protective or deflationary mechanisms, not vulnerabilities.
 The DBTC contract uses OpenZeppelin libraries, an immutable 0.2% fee distributed between DAO and Treasury, and a Pausable mechanism strictly for emergency protection.
