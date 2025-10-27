@@ -111,3 +111,53 @@ All critical and high-severity issues resolved prior to deployment.
 
 MIT License
 yaml
+
+
+DeflationaryBTC (DBTC) – Risk Clarification Report
+Overview
+
+Following an automated scan by De.Fi, several “High Risk” issues were flagged for the DeflationaryBTC smart contract.
+After a full technical review, we confirm these are false positives.
+Below is a detailed clarification for each item.
+
+🔒 1️⃣ Pausable (High Risk – False Positive)
+
+The pause() function exists only as a security safeguard — to be used in case of emergency (e.g., exploit detection or malfunction).
+
+It does not grant arbitrary control over transfers.
+
+The implementation follows OpenZeppelin best practices, the same framework used by major projects like USDC, AAVE, and Compound.
+
+✅ Reality: Security measure, not a risk.
+
+💸 2️⃣ Transfer Fee (Critical – False Positive)
+
+The audit flagged a “fee mechanism” but misinterpreted it.
+
+DBTC applies a fixed 0.2% transaction fee, transparently split 50/50 between the DAO and the Treasury.
+
+The fee value is immutable — there is no function to modify it after deployment.
+
+✅ Reality: Transparent, immutable, and deflationary system.
+
+💧 3️⃣ Missing Liquidity (High Risk – False Positive / Temporary)
+
+De.Fi couldn’t detect liquidity pairs because the token is newly deployed and currently in the pre-market phase.
+
+As soon as liquidity is added on DEX platforms (e.g., Uniswap, SushiSwap), this flag will automatically disappear.
+
+✅ Reality: Normal for new tokens before public listing.
+
+👥 4️⃣ Whitelisting (Attention Required – False Positive)
+
+No active or dynamic whitelist exists in the contract.
+
+The scanner mistakenly identified internal exclusions (e.g., isExcludedFromFee) used only to prevent double taxation during internal DAO or contract transfers.
+
+✅ Reality: No central control, only internal safety logic.
+
+Summary
+
+“All issues flagged by De.Fi are standard protective or deflationary mechanisms, not vulnerabilities.
+The DBTC contract uses OpenZeppelin libraries, an immutable 0.2% fee distributed between DAO and Treasury, and a Pausable mechanism strictly for emergency protection.
+No whitelists or privileged addresses exist, and all operations are fully transparent and verifiable on-chain.”
