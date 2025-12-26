@@ -1,10 +1,10 @@
-# DeflationaryBTC (DBTC)
+# DeflationaryDBTC (DBTC)
 
 <p align="center">
   <img src="DBTC_logo.png" alt="DBTC Logo" width="150"/>
 </p>
 
-<h1 align="center">DeflationaryBTC (DBTC)</h1>
+<h1 align="center">DeflationaryDBTC (DBTC)</h1>
 <p align="center">
   Next-Generation Deflationary Token & Ecosystem on Polygon
 </p>
@@ -19,7 +19,7 @@
 
 
 ## 📖 Overview
-**DeflationaryBTC (DBTC)** is an advanced ERC20 smart contract deployed on the **Polygon Mainnet**, designed to integrate **deflationary economics, staking, long-hold incentives, and automated liquidity mechanisms**.  
+**DeflationaryDBTC (DBTC)** is an advanced ERC20 smart contract deployed on the **Polygon Mainnet**, designed to integrate **deflationary economics, staking, long-hold incentives, and automated liquidity mechanisms**.  
 It is not a simple token but a **full-featured protocol** aimed at balancing scarcity, utility, and community-driven incentives.
 
 ## 📊 Deployed Contract Addresses:**  
@@ -54,7 +54,7 @@ Polygon Amoy tesnet: [`0x330F310b6Eda04A9477564b5CaA97904EabE67c5`](https://amoy
 ---
 
 ## ⚙️ Tokenomics
-- **Token Name:** DeflationaryBTC  
+- **Token Name:** DeflationaryDBTC  
 - **Symbol:** DBTC  
 - **Decimals:** 18  
 - **Initial Supply:** `2,000,000,000 DBTC`  
@@ -117,7 +117,7 @@ MIT License
 yaml
 
 ---
- DeflationaryBTC (DBTC) – Risk Clarification Report
+ DeflationaryDBTC (DBTC) – Risk Clarification Report
  Overview 👇
 
 Following an automated scan by De.Fi, several “High Risk” issues were flagged for the DeflationaryBTC smart contract.
