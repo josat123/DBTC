@@ -595,8 +595,8 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                     <img src="DBTC.svg" alt="DBTC Logo">
-                   <div class="logo-text">DBTC Protocol</div>
+                    <img src="https://www.dwjcrypto.com/eth/DBTC-removebg-preview.png" alt="DBTC Logo">
+                    <div class="logo-text">DBTC Protocol</div>
                 </div>
                 <div class="language-selector">
                     <button class="lang-btn active" data-lang="en">EN</button>
@@ -1118,8 +1118,8 @@
                                         rpcUrls: ['https://polygon-rpc.com/'],
                                         blockExplorerUrls: ['https://polygonscan.com/'],
                                         nativeCurrency: {
-                                            name: 'MATIC',
-                                            symbol: 'MATIC',
+                                            name: 'POL',
+                                            symbol: 'POL',
                                             decimals: 18
                                         },
                                     },
@@ -1206,12 +1206,12 @@
                     return;
                 }
                 
-                // Get MATIC balance
+                // Get POL balance
                 const balance = await web3.eth.getBalance(currentAccount);
-                const maticBalance = web3.utils.fromWei(balance, 'ether');
+                const polBalance = web3.utils.fromWei(balance, 'ether');
                 
-                if (parseFloat(maticBalance) < 0.01) {
-                    updateStatus(`Wallet connected but has insufficient MATIC balance (${parseFloat(maticBalance).toFixed(4)} MATIC). Minimum 0.01 MATIC required.`, 'error');
+                if (parseFloat(polBalance) < 0.01) {
+                    updateStatus(`Wallet connected but has insufficient POL balance (${parseFloat(polBalance).toFixed(4)} POL). Minimum 0.01 POL required.`, 'error');
                     connectBtn.style.display = 'none';
                     claimBtn.style.display = 'none';
                     switchBtn.style.display = 'none';
@@ -1224,7 +1224,7 @@
                 );
                 
                 if (alreadyRegistered) {
-                    updateStatus(`Wallet connected! Address: ${currentAccount.substring(0, 10)}... Balance: ${parseFloat(maticBalance).toFixed(4)} MATIC. You are already registered for the airdrop.`, 'success');
+                    updateStatus(`Wallet connected! Address: ${currentAccount.substring(0, 10)}... Balance: ${parseFloat(polBalance).toFixed(4)} POL. You are already registered for the airdrop.`, 'success');
                     connectBtn.style.display = 'none';
                     claimBtn.style.display = 'inline-block';
                     claimBtn.disabled = true;
@@ -1238,7 +1238,7 @@
                     });
                     switchBtn.style.display = 'none';
                 } else {
-                    updateStatus(`Wallet connected! Address: ${currentAccount.substring(0, 10)}... Balance: ${parseFloat(maticBalance).toFixed(4)} MATIC`, 'success');
+                    updateStatus(`Wallet connected! Address: ${currentAccount.substring(0, 10)}... Balance: ${parseFloat(polBalance).toFixed(4)} POL`, 'success');
                     connectBtn.style.display = 'none';
                     claimBtn.style.display = 'inline-block';
                     switchBtn.style.display = 'none';
@@ -1289,9 +1289,3 @@
     </script>
 </body>
 </html>
-</html>
-
-
-
-
-
