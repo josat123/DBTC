@@ -2,6 +2,7 @@ We are creating an English version of the README that conveys the same manifesto
 The goal is to appeal to a global audience while maintaining the same tone of transparency, community focus, and opposition to centralized practices in DeFi.
 
 DBTC & Decentralized AMM: A Manifesto for True Decentralization
+
 🎯 We're Not Your Typical Token
 Warning: This is not a project to enrich developers while leaving the community empty-handed.
 We don't promise yachts, villas, or easy gains. We're here to build something different: a fair, transparent, and sustainable economic ecosystem where created value is redistributed to the community that supports it.
@@ -131,7 +132,7 @@ The DBTC & Decentralized AMM Team
 
 Official Channels:web.telegram.org/a/#-4760050212
 
-Website: [SiteWeb](https:deflationarybtc.online)]
+Website: [[SiteWeb](https:deflationarybtc.online)]
 
 GitHub: [[DBTC](https://github.com/josat123/DBTC)]
 
@@ -143,6 +144,7 @@ DAO Governance: [[Dao Contract](https://polygonscan.com/address/0xC7FC5df8Ca077B
 
 
 All contracts are verified. All addresses are public. All decisions are debatable.
+
 
 
 
