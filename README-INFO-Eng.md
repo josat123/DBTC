@@ -129,19 +129,20 @@ Let's build something different together. Or fail trying.
 The DBTC & Decentralized AMM Team
 "Building bridges, not walls. Creating value, not extracting it."
 
-Official Channels:
+Official Channels:web.telegram.org/a/#-4760050212
 
-Website: [Insert URL]
+Website: [https://deflationarybtc.online/]
 
-GitHub: [Insert Link]
+GitHub: [[Insert Link](https://github.com/josat123/DBTC)]
 
 Twitter: @DBTC_RealDeFi
 
-Telegram: t.me/DBTC_Community
+Telegram: t.me/DBTC848951
 
 Multisig Dashboard: [Insert Public Link]
 
-DAO Governance: [Insert Link]
+DAO Governance: [[Insert Link]](https://polygonscan.com/address/0xC7FC5df8Ca077BFd97e529e1bE033C212fcF1717#code)
 
 
 All contracts are verified. All addresses are public. All decisions are debatable.
+
