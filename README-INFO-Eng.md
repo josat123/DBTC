@@ -44,6 +44,7 @@ We built our own Automated Market Maker because:
 "If they close the doors, we build a new house where all ideas are welcome."
 
 Unique Features:
+
 ✅ No censorship based on different tokenomics
 
 ✅ Native support for advanced mechanisms (fees, complex staking, DAO integration)
@@ -141,5 +142,6 @@ Telegram: t.me/DBTC_Community
 Multisig Dashboard: [Insert Public Link]
 
 DAO Governance: [Insert Link]
+
 
 All contracts are verified. All addresses are public. All decisions are debatable.
