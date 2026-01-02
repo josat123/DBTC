@@ -1,6 +1,3 @@
-We are creating an English version of the README that conveys the same manifesto and principles.
-The goal is to appeal to a global audience while maintaining the same tone of transparency, community focus, and opposition to centralized practices in DeFi.
-
 DBTC & Decentralized AMM: A Manifesto for True Decentralization
 
 🎯 We're Not Your Typical Token
@@ -144,6 +141,7 @@ DAO Governance: [[Dao Contract](https://polygonscan.com/address/0xC7FC5df8Ca077B
 
 
 All contracts are verified. All addresses are public. All decisions are debatable.
+
 
 
 
