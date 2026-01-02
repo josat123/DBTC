@@ -1,4 +1,4 @@
-DBTC & Decentralized AMM: A Manifesto for True Decentralization
+DBTC & Decentralized AMM: A Manifesto for True Decentralization.
 
 🎯 We're Not Your Typical Token
 Warning: This is not a project to enrich developers while leaving the community empty-handed.
@@ -141,6 +141,7 @@ DAO Governance: [[Dao Contract](https://polygonscan.com/address/0xC7FC5df8Ca077B
 
 
 All contracts are verified. All addresses are public. All decisions are debatable.
+
 
 
 
