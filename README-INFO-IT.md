@@ -129,17 +129,16 @@ Il Team DBTC & Decentralized AMM
 
 Canali Ufficiali:
 
-Website: [Inserire URL]
+Website: [SitoWeb](https:deflationarybtc.online)]
 
-GitHub: [Inserire Link]
+GitHub: [[DBTC](https://github.com/josat123/DBTC)]
 
 Twitter: @DBTC_RealDeFi
 
-Telegram: t.me/DBTC_Community
+Telegram: t.me/DBTC848951
 
-Dashboard Multisig: [Inserire Link Pubblico]
-
-DAO Governance: [Inserire Link]
+DAO Governance: [Dao Contratto](https://polygonscan.com/address/0xC7FC5df8Ca077BFd97e529e1bE033C212fcF1717#code)]
 
 Tutti i contratti sono verificati. Tutti gli indirizzi sono pubblici. Tutte le decisioni sono discutibili.
+
 
