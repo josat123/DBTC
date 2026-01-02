@@ -139,9 +139,10 @@ Twitter: @DBTC_RealDeFi
 
 Telegram: t.me/DBTC848951
 
-DAO Governance: [[Dao Contract](https://polygonscan.com/address/0xC7FC5df8Ca077BFd97e529e1bE033C212fcF1717#code)
+DAO Governance: [[Dao Contract](https://polygonscan.com/address/0xC7FC5df8Ca077BFd97e529e1bE033C212fcF1717#code)]
 
 
 All contracts are verified. All addresses are public. All decisions are debatable.
+
 
 
