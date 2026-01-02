@@ -1,6 +1,7 @@
 Unitevi a noi. Costruiamo una DeFi diversa. Non per arricchire pochi, ma per dare potere a molti.
 
 DBTC & Decentralized AMM: Un Manifesto per la Vera Decentralizzazione
+
 🎯 Non Siamo il Solito Token
 Attenzione: questo non è un progetto per arricchire gli sviluppatori e lasciare la community a bocca asciutta.
 Non promettiamo yatch, ville o guadagni facili. Siamo qui per costruire qualcosa di diverso: un ecosistema economico equo, trasparente e sostenibile, dove il valore creato viene ridistribuito alla comunità che lo sostiene.
@@ -43,6 +44,7 @@ Abbiamo costruito il nostro Automated Market Maker perché:
 "Se loro chiudono le porte, noi costruiamo una casa nuova dove tutte le idee sono benvenute."
 
 Caratteristiche Uniche:
+
 ✅ Nessuna censura basata su tokenomics diverse
 
 ✅ Supporto nativo per meccanismi avanzati (fee, staking complessi, DAO integration)
@@ -140,5 +142,6 @@ Telegram: t.me/DBTC848951
 DAO Governance: [Dao Contratto](https://polygonscan.com/address/0xC7FC5df8Ca077BFd97e529e1bE033C212fcF1717#code)]
 
 Tutti i contratti sono verificati. Tutti gli indirizzi sono pubblici. Tutte le decisioni sono discutibili.
+
 
 
