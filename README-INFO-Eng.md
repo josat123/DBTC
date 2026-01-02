@@ -136,7 +136,7 @@ Website: [[SiteWeb](https:deflationarybtc.online)]
 
 GitHub: [[DBTC](https://github.com/josat123/DBTC)]
 
-Twitter: @DBTC_RealDeFi
+X Twitter: @DBTC_RealDeFi
 
 Telegram: t.me/DBTC848951
 
@@ -144,6 +144,7 @@ DAO Governance: [[Dao Contract](https://polygonscan.com/address/0xC7FC5df8Ca077B
 
 
 All contracts are verified. All addresses are public. All decisions are debatable.
+
 
 
 
